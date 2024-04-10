@@ -80,6 +80,3 @@ WebAPI: Google Cloud Vision API、Google API、LINE API
   画像解析結果の食品名とデータベースから出されたカロリーから、条件分岐で表示を変化させる。
 ・スタンプで画面を埋もれさせる機能
   何個目のスタンプをどこに配置するのか設定しておく。（一定以上送ると画面の状況は変わらなくなる）
-
-**■ 画面遷移図**
-https://www.figma.com/file/tRysgu7gEyZI32HNSIl9FB/portfolio?type=design&node-id=0%3A1&mode=design&t=C2Aj8zitTiE7NrDC-1
