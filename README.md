@@ -57,7 +57,7 @@ RUNTEQコミュニティ内やinstagram・Xで、知人に使ってもらい口�
   Ruby 3.2.3 Rails 7.1.4.3
 フロントエンド: JavaScript
 CSSフレームワーク:　Tailwind
-WebAPI: Google Cloud Vision API、Google API、LINE API
+WebAPI: Google Cloud Vision API、ChatGPT API（GPT-3.5 Turbo）、Google API、LINE API
 インフラ:
   Webアプリケーションサーバ: Heroku
   ファイルサーバ: AWS S3
@@ -75,7 +75,7 @@ WebAPI: Google Cloud Vision API、Google API、LINE API
 ・画像解析
   Google Cloud Vision APIを使用する。
 ・カロリー計算
-  文部科学省のデータを整理しデータベースを作成する。
+  ChatGPT（GPT-3.5 Turbo）を作成する。
 ・監視する側へのキャラクターによるコメント
   画像解析結果の食品名とデータベースから出されたカロリーから、条件分岐で表示を変化させる。
 ・スタンプで画面を埋もれさせる機能
@@ -83,3 +83,6 @@ WebAPI: Google Cloud Vision API、Google API、LINE API
 
   **■ 画面遷移図**
 https://www.figma.com/file/tRysgu7gEyZI32HNSIl9FB/portfolio?type=design&node-id=0%3A1&mode=design&t=C2Aj8zitTiE7NrDC-1
+
+  **■ ER図**
+https://drive.google.com/file/d/1OVnCNF-uCuxaKUU1m1V6TYiBOCORV3af/view?usp=sharing
