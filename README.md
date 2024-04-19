@@ -9,7 +9,7 @@
 **■ ユーザー層について**
 意志が弱くダイエットが継続できず、周りの人と楽しみながらゆるいダイエットがしたい人。
 また、家族や友人にダイエットしてほしいと考えている人。
-これらを満たす、家族・恋人・友人などの親しい関係にある1対3人以下くらいのグループ。
+これらを満たす、家族・恋人・友人などの親しい関係にある1対3人以下のグループ。
 
 **■サービスの利用イメージ**
 ダイエットを行う側は、食事を画像で記録することができ、もらったスタンプの意味ごと（怒り・賞賛・応援など）の集計と、それによる点数付け（マイナスも存在する）やコメントを閲覧できる。
@@ -57,7 +57,7 @@ RUNTEQコミュニティ内やinstagram・Xで、知人に使ってもらい口�
   Ruby 3.2.3 Rails 7.1.4.3
 フロントエンド: JavaScript
 CSSフレームワーク:　Tailwind
-WebAPI: Google Cloud Vision API、Google API、LINE API
+WebAPI: Google Cloud Vision API、ChatGPT API（GPT-3.5 Turbo）、Google API、LINE API
 インフラ:
   Webアプリケーションサーバ: Heroku
   ファイルサーバ: AWS S3
@@ -75,8 +75,14 @@ WebAPI: Google Cloud Vision API、Google API、LINE API
 ・画像解析
   Google Cloud Vision APIを使用する。
 ・カロリー計算
-  文部科学省のデータを整理しデータベースを作成する。
+  ChatGPT（GPT-3.5 Turbo）を作成する。
 ・監視する側へのキャラクターによるコメント
   画像解析結果の食品名とデータベースから出されたカロリーから、条件分岐で表示を変化させる。
 ・スタンプで画面を埋もれさせる機能
   何個目のスタンプをどこに配置するのか設定しておく。（一定以上送ると画面の状況は変わらなくなる）
+
+  **■ 画面遷移図**
+https://www.figma.com/file/tRysgu7gEyZI32HNSIl9FB/portfolio?type=design&node-id=0%3A1&mode=design&t=C2Aj8zitTiE7NrDC-1
+
+  **■ ER図**
+https://drive.google.com/file/d/1OVnCNF-uCuxaKUU1m1V6TYiBOCORV3af/view?usp=sharing
