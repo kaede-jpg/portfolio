@@ -2,6 +2,7 @@ ARG RUBY_VERSION=ruby:3.2.3
 ARG NODE_VERSION=20
 
 FROM $RUBY_VERSION
+ENV RAILS_ENV=production
 ARG RUBY_VERSION
 ARG NODE_VERSION
 ENV LANG C.UTF-8
@@ -20,3 +21,7 @@ COPY yarn.lock /app/yarn.lock
 RUN bundle install
 RUN yarn install
 COPY . /app
+
+COPY start.sh /start.sh
+RUN chmod 744 /start.sh
+CMD ["sh", "/start.sh"]
