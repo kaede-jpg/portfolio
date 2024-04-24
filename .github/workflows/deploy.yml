@@ -25,16 +25,10 @@ jobs:
           ruby-version: 3.2.3
           bundler-cache: true
 
-      - name: Cache node modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Install gem
-        run: bundle install
+        run: |
+          bundle install
+          yarn install
 
       - name: Setup Database
         run: |
@@ -44,7 +38,7 @@ jobs:
 
       - name: Run tests
         run: |
-          bundle exec rubocop -a
+          bundle exec rubocop
           bundle exec rspec
 
   heroku-deploy:
