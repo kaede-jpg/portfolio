@@ -1,4 +1,4 @@
-name: Tests and Deproy
+name: Tests and Deploy
 on:
   push:
     branches:
@@ -33,22 +33,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Bundler and gem install
-        run: |
-          gem install bundler
-          bundle install
+      - name: Install gem
+        run: bundle install
 
       - name: Setup Database
         run: |
-          bin/rails db:create
-          bin/rails db:migrate
+          cp config/database.ci.yml config/database.yml  
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
 
       - name: Run tests
         run: |
           bundle exec rubocop
           bundle exec rspec
 
-  heroku-deproy:
+  heroku-deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
