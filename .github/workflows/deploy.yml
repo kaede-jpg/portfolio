@@ -1,4 +1,4 @@
-name: Deproy
+name: Tests and Deproy
 on:
   push:
     branches:
@@ -25,11 +25,18 @@ jobs:
           ruby-version: 3.2.3
           bundler-cache: true
 
-      - name: Install dependencies
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Bundler and gem install
         run: |
           gem install bundler
           bundle install
-          bin/yarn install
 
       - name: Setup Database
         run: |
