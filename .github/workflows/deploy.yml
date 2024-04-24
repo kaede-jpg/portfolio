@@ -45,7 +45,7 @@ jobs:
       - name: Run tests
         run: |
           bundle exec rubocop
-          rake 'spec:prepare'
+          bundle exec rake 'spec:prepare'
           bundle exec rspec
 
   heroku-deploy:
