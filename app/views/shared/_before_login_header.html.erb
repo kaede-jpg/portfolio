@@ -4,7 +4,12 @@
   </div>
   <div class="flex-none">
     <button class="btn btn-square btn-ghost">
-      <%= link_to "ログイン", "#" %>
+      <% if current_user %>
+        <%= link_to "ログアウト", :logout, data: { turbo_method: :delete } %>
+        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+      <% else %>
+        <%= link_to "ログイン", :login %>
+      <% end %>
     </button>
   </div>
 </div>
