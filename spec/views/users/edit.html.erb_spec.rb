@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe 'users/edit', type: :view do
   let(:user) do
     User.create!(
+      name: 'MyString',
       email: 'MyString',
-      crypted_password: 'MyString',
-      salt: 'MyString'
+      password: 'MyString',
+      password_confirmation: 'MyString'
     )
   end
 
@@ -18,10 +19,6 @@ RSpec.describe 'users/edit', type: :view do
 
     assert_select 'form[action=?][method=?]', user_path(user), 'post' do
       assert_select 'input[name=?]', 'user[email]'
-
-      assert_select 'input[name=?]', 'user[crypted_password]'
-
-      assert_select 'input[name=?]', 'user[salt]'
     end
   end
 end
