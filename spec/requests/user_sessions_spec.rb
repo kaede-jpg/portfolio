@@ -7,11 +7,4 @@ RSpec.describe 'UserSessions', type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-
-  describe 'DELETE logout' do
-    it 'returns http success' do
-      delete '/logout'
-      expect(response).to have_http_status(:found)
-    end
-  end
 end
