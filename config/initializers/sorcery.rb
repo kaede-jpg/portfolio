@@ -224,7 +224,10 @@ Rails.application.config.sorcery.configure do |config|
   config.line.callback_url = Rails.application.credentials.dig(Rails.env.to_sym, :sorcery, :line_callback_url)
   config.line.scope = 'profile'
   # config.line.bot_prompt = "normal"
-  # config.line.user_info_mapping = {name: 'displayName'}
+  config.line.user_info_mapping = {
+    name: 'displayName',
+    email: 'userId'
+  }
 
   # For information about Discord API
   # https://discordapp.com/developers/docs/topics/oauth2
@@ -542,7 +545,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
     # User's identifier in the `authentications` class.
     # Default: `:user_id`
