@@ -1,0 +1,7 @@
+<%= form_with url: relationships_invitation_code_path, data: { turbo: false } do |f| %>
+    <%= f.radio_button :invitation_my_role, :monitor, checked: true %>
+    <%= f.label :invitation_my_role_monitor, "監視したい！" %>
+    <%= f.radio_button :invitation_my_role, :monitored %>
+    <%= f.label :invitation_my_role_monitored, "監視されたい！" %>
+    <%= f.submit "招待コード発行" %>
+<% end %>
