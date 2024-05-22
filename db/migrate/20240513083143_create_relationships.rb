@@ -1,7 +1,8 @@
 class CreateRelationships < ActiveRecord::Migration[7.1]
   def change
     create_table :relationships do |t|
-      t.integer :monitor_id, index: true, null: false, index: { unique: true }
+      t.integer :monitor_id, null: false
+      t.index :monitor_id, unique: true
       t.integer :monitored_id, index: true, null: false
 
       t.timestamps
