@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'oauth/:provider' => 'oauths#oauth', as: :auth_at_provider
 
   resources :relationships, only: %i[new create]
-  post 'relationships/invitation_code'
+  patch 'relationships/invitation_code'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -11,6 +11,8 @@
           <% if current_user %>
             <li><%= link_to "ログアウト", :logout, data: { turbo_method: :delete } %></li>
             <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+            <li><%= link_to "連携する", new_relationship_path %></li>
+
           <% else %>
             <li><%= link_to "ログイン", :login %></li>
           <% end %>
