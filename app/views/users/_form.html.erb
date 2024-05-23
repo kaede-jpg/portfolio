@@ -12,6 +12,10 @@
   <% end %>
 
   <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+  <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
@@ -34,4 +38,4 @@
     <%= form.submit %>
   </div>
 <% end %>
-<%= link_to 'Login with Line', auth_at_provider_path(provider: :line) %>
+<%= link_to 'Create with Line', auth_at_provider_path(provider: :line) %>

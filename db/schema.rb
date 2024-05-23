@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_21_100309) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_23_085956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,8 +43,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_100309) do
     t.string "invitation_digest"
     t.datetime "invitation_made_at"
     t.integer "invitation_my_role"
+    t.string "user_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_digest"], name: "index_users_on_invitation_digest", unique: true
+    t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
   add_foreign_key "relationships", "users", column: "monitor_id"

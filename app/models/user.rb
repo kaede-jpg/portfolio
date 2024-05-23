@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
+  validates :user_id, uniqueness: true
+  validates :user_id, presence: true, unless: :new_record?
 
   validates :invitation_digest, uniqueness: true, allow_nil: true
   enum invitation_my_role: { monitor: 0, monitored: 1 }
