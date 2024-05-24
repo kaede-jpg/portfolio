@@ -3,8 +3,8 @@ class RelationshipsController < ApplicationController
   def new; end
 
   def create
-    partner = User.find_by(user_id: params[:relationship][:user_id])
-    if valid_partner?(partner, params[:relationship][:invitation_code])
+    partner = User.find_by(user_id: relationship_params[:user_id])
+    if valid_partner?(partner, relationship_params[:invitation_code])
       create_relationship(partner)
       if @relationship.save
         redirect_to root_path
@@ -19,8 +19,8 @@ class RelationshipsController < ApplicationController
   end
 
   def invitation_code
-    if params[:user][:invitation_my_role].present?
-      create_invitation_attributes(params[:user][:user_id], params[:user][:invitation_my_role])
+    if invitation_params[:invitation_my_role].present?
+      create_invitation_attributes(invitation_params[:user_id], invitation_params[:invitation_my_role])
       if current_user.save
         render :invitation_code
       else
@@ -35,6 +35,14 @@ class RelationshipsController < ApplicationController
   end
 
   private
+
+  def invitation_params
+    params.require(:user).permit(:user_id, :invitation_my_role)
+  end
+
+  def relationship_params
+    params.require(:relationship).permit(:user_id, :invitation_code)
+  end
 
   def initialize_relationship
     @relationship = Relationship.new
