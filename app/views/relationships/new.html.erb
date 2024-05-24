@@ -1,0 +1,23 @@
+<p>連携コードをお持ちですか？</p>
+<%= form_with model: @relationship, url: relationships_path do |f| %>
+    <%= render 'shared/error_message' , object: f.object %>
+    <%= f.text_field :user_id, placeholder: "パートナーのユーザーID", class: "input input-bordered w-full max-w-xs" %>
+    <%= f.text_field :invitation_code, placeholder: "連携コード", class: "input input-bordered w-full max-w-xs" %>
+    <%= f.submit "登録", class: "btn" %>
+<% end %>
+<p>持っていないので、連携コードを発行する</p>
+<div class="flex flex-col items-center">
+    <%= form_with model: current_user, url: relationships_invitation_code_path, data: { turbo: false } do |f| %>
+        <%= render 'shared/error_message' , object: f.object %>
+        <%= f.text_field :user_id, placeholder: "ユーザーID", class: "input input-bordered w-full max-w-xs" %>
+        <div class="flex items-center">
+            <%= f.radio_button :invitation_my_role, :monitor, checked: true, class: "radio checked:bg-red-500" %>
+            <%= f.label :invitation_my_role_monitor, "監視したい！" %>
+        </div>
+        <div  class="flex items-center">
+            <%= f.radio_button :invitation_my_role, :monitored, class: "radio checked:bg-red-500" %>
+            <%= f.label :invitation_my_role_monitored, "監視されたい！" %>
+        </div>
+        <%= f.submit "コード発行", class: "btn" %>
+    <% end %>
+</div>

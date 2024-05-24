@@ -4,12 +4,14 @@ RSpec.describe 'users/index', type: :view do
   before(:each) do
     assign(:users, [
              User.create!(
+               user_id: 'user_1',
                name: 'MyString',
                email: 'Email1',
                password: 'MyString',
                password_confirmation: 'MyString'
              ),
              User.create!(
+               user_id: 'user_2',
                name: 'MyString',
                email: 'Email2',
                password: 'MyString',
