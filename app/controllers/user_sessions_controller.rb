@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:user_id], params[:password])
 
     if @user
-      redirect_back_or_to(:users, notice: 'Login successful')
+      redirect_back_or_to records_path, notice: 'Login successful'
     else
       flash.now[:alert] = 'Login failed'
       render :new, status: :unprocessable_entity
@@ -15,6 +15,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:users, notice: 'Logged out!', status: :see_other)
+    redirect_to root_path, notice: 'Logged out!', status: :see_other
   end
 end
