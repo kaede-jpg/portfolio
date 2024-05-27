@@ -1,0 +1,5 @@
+<%= form_with(model: record) do |f| %>
+  <%= render 'shared/error_message' , object: f.object %>
+  <%= f.file_field :meal_image, required: true, class: "file-input file-input-bordered w-full max-w-xs" %>
+  <%= f.submit '登録', class: 'btn' %>
+<% end %>

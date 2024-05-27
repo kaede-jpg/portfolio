@@ -4,20 +4,7 @@
   </div> 
   <div class="flex justify-end flex-1 px-2">
     <div class="flex items-stretch">
-      <a class="btn btn-ghost rounded-btn">Button</a>
-      <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
-        <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-          <% if current_user %>
-            <li><%= link_to "ログアウト", :logout, data: { turbo_method: :delete } %></li>
-            <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-            <li><%= link_to "連携する", new_relationship_path %></li>
-
-          <% else %>
-            <li><%= link_to "ログイン", :login %></li>
-          <% end %>
-        </ul>
-      </div>
+      <%= link_to "ログイン", :login, class:"btn btn-ghost rounded-btn" %>
     </div>
   </div>
 </div>

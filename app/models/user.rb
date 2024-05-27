@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one :relationship, foreign_key: :monitor_id, dependent: :destroy, inverse_of: :monitor
   has_many :relationships, foreign_key: :monitored_id, dependent: :destroy, inverse_of: :monitored
 
+  has_many :records, dependent: :destroy
+
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
