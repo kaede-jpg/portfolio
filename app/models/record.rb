@@ -4,4 +4,5 @@ class Record < ApplicationRecord
 
     validates :user_id, presence: true
     validates :meal_image, presence: true, blob: { content_type: :image }
+
 end

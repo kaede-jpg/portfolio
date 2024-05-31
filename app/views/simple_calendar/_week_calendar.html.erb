@@ -1,0 +1,29 @@
+<div class="simple-calendar">
+  <div class="calendar-heading flex flex-col items-center justify-center">
+    <span class="calendar-title font-bold">
+      <%= t('date.month_names')[start_date.month] %> <%= start_date.year %>
+    </span>
+
+    <nav>
+      <%= link_to t('simple_calendar.previous', default: '＜'), calendar.url_for_previous_view %>
+      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
+      <%= link_to t('simple_calendar.next', default: '＞'), calendar.url_for_next_view %>
+    </nav>
+  </div>
+
+  <div role="tablist" class="tabs tabs-lifted">
+    <% date_range.each_slice(7) do |week| %>
+      <% has_today = week.include?(Date.today) %>
+      <% week.each_with_index do |day,index| %>
+        <% checked = (day == Date.today) || (!has_today && index == 3) %>
+        <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="<%= day.day %>" <%= 'checked' if checked %> />
+        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+          <div class="flex flex-wrap gap-4">
+            <% calendar.sorted_events_for(day).each do |record| %>
+              <%= render record %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
