@@ -20,4 +20,5 @@ class Relationship < ApplicationRecord
 
     errors.add(:monitor_id, ': 既に監視者に設定されています')
   end
+  
 end

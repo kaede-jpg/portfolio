@@ -7,7 +7,7 @@ class RelationshipsController < ApplicationController
     if valid_partner?(partner, relationship_params[:invitation_code])
       create_relationship(partner)
       if @relationship.save
-        redirect_to root_path
+        redirect_to records_path, notice: '連携しました'
       else
         flash.now[:alert] = '連携できませんでした'
         render :new, status: :unprocessable_entity

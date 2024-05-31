@@ -1,0 +1,20 @@
+<div class="card card-compact bg-base-200 shadow-xl mx-auto">
+  <div class="card-body">
+    <h2 class="card-title">
+      <%= record.created_at.strftime("%H：%M") %>
+    </h2>
+  </div>
+  <div id="<%= dom_id record %>">
+    <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
+  </div>
+  <div class="card-body">
+    <div class="card-actions place-content-end">
+      コメント
+      <% if current_user.relationship %>
+        スタンプを送る
+      <% else %>
+        <%= link_to "delete record", record_path(record), data: { turbo_method: :delete, turbo_confirm: t('.delete_confirm')}, class: "btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
