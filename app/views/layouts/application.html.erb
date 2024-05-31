@@ -12,7 +12,11 @@
 
   <body>
     <header>
-      <%= render 'shared/before_login_header'%>
+      <% if logged_in?%>
+        <%= render 'shared/header'%>
+      <% else %>
+        <%= render 'shared/before_login_header'%>
+      <% end %>
     </header>
     <div>
       <% if flash[:notice] %>
