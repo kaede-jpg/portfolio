@@ -2,12 +2,15 @@
   <%= @message %>
 </div>
 <div>
+  <% if @monitor %>
+    <%= link_to "記録する！", new_record_path, class: "btn" %>
+  <% end %>
+</div>
+<div>
   <%= week_calendar(number_of_weeks: 1, events: @records, attribute: :created_at,) do |date ,records| %>
     <%= date %>
     <% records.each do |record| %>
-      <%= render record %>
+      <%= render record, comment: @comment %>
     <% end %>
   <% end %>
 </div>
-
-<%= link_to "New record", new_record_path %>

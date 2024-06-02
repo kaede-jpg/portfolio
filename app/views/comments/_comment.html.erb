@@ -1,0 +1,8 @@
+<div>
+    <%= comment.user.name%>
+    <%= comment.body %>
+    <% if current_user == comment.user%>
+        編集
+        <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "コメントを削除しますか？"}, class: "btn" %>
+    <% end %>
+</div>
