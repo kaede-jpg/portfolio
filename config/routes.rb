@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :relationships, only: %i[new create]
   patch 'relationships/invitation_code'
 
-  resources :records, only: %i[index new create destroy]
+  resources :records, only: %i[index new create destroy] do
+    resources :comments, only: %i[create update destroy], shallow: true
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

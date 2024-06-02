@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :relationships, foreign_key: :monitored_id, dependent: :destroy, inverse_of: :monitored
 
   has_many :records, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -35,5 +36,4 @@ class User < ApplicationRecord
   def self.new_token
     SecureRandom.urlsafe_base64
   end
-
 end
