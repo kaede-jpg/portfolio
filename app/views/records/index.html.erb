@@ -2,7 +2,7 @@
   <%= @message %>
 </div>
 <div>
-  <% if @monitor %>
+  <% if current_user.monitored? %>
     <%= link_to "記録する！", new_record_path, class: "btn" %>
   <% end %>
 </div>

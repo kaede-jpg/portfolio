@@ -1,0 +1,12 @@
+<% if @comment.errors.present? %>
+  <%= turbo_stream.replace "comment-form-#{dom_id(@record)}" do %>
+    <%= render 'comments/form', comment: @comment, record: @record %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.append "table-comment-#{dom_id(@record)}" do %>
+    <%= render 'comments/comment', comment: @comment %>
+  <% end %>
+  <%= turbo_stream.replace "comment-form-#{dom_id(@record)}" do %>
+    <%= render 'comments/form', comment: Comment.new, record: @record %>
+  <% end %>
+<% end %>

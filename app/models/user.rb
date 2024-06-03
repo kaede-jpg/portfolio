@@ -20,7 +20,9 @@ class User < ApplicationRecord
   validates :user_id, presence: true, unless: :new_record?
 
   validates :invitation_digest, uniqueness: true, allow_nil: true
+  
   enum invitation_my_role: { monitor: 0, monitored: 1 }
+  validate :role_change_restriction
 
   # 渡された文字列のハッシュ値を返す
   def self.digest(string)
@@ -36,4 +38,18 @@ class User < ApplicationRecord
   def self.new_token
     SecureRandom.urlsafe_base64
   end
+
+  # 連携済か判定する
+  def related?
+    relationship || relationships.exists?
+  end
+
+  private
+
+  def role_change_restriction
+    if invitation_my_role_changed? && related?
+      errors.add(:role, "cannot be changed because there are existing relationships")
+    end
+  end
+
 end
