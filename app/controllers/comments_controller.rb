@@ -1,12 +1,9 @@
 class CommentsController < ApplicationController
+  
   def create
     @comment = current_user.comments.build(comment_params)
+    @record = @comment.record
     @comment.save
-  end
-
-  def update
-    @comment = current_user.comments.find(params[:id])
-    @board.update(board_params)
   end
 
   def destroy
