@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates :user_id, presence: true, unless: :new_record?
 
   validates :invitation_digest, uniqueness: true, allow_nil: true
-  
+
   enum invitation_my_role: { monitor: 0, monitored: 1 }
   validate :role_change_restriction
 
@@ -47,9 +47,8 @@ class User < ApplicationRecord
   private
 
   def role_change_restriction
-    if invitation_my_role_changed? && related?
-      errors.add(:role, "cannot be changed because there are existing relationships")
-    end
-  end
+    return unless invitation_my_role_changed? && related?
 
+    errors.add(:role, 'cannot be changed because there are existing relationships')
+  end
 end
