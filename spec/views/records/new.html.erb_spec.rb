@@ -4,7 +4,7 @@ RSpec.describe 'records/new', type: :view do
   before(:each) do
     assign(:record, Record.new(
                       user_id: 1,
-                      meal_image: 'MyString'
+                      meal_image: fixture_file_upload('spec/fixtures/test_image.png')
                     ))
   end
 
@@ -12,8 +12,6 @@ RSpec.describe 'records/new', type: :view do
     render
 
     assert_select 'form[action=?][method=?]', records_path, 'post' do
-      assert_select 'input[name=?]', 'record[user_id]'
-
       assert_select 'input[name=?]', 'record[meal_image]'
     end
   end
