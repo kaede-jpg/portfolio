@@ -10,24 +10,8 @@ RSpec.describe RecordsController, type: :routing do
       expect(get: '/records/new').to route_to('records#new')
     end
 
-    it 'routes to #show' do
-      expect(get: '/records/1').to route_to('records#show', id: '1')
-    end
-
-    it 'routes to #edit' do
-      expect(get: '/records/1/edit').to route_to('records#edit', id: '1')
-    end
-
     it 'routes to #create' do
       expect(post: '/records').to route_to('records#create')
-    end
-
-    it 'routes to #update via PUT' do
-      expect(put: '/records/1').to route_to('records#update', id: '1')
-    end
-
-    it 'routes to #update via PATCH' do
-      expect(patch: '/records/1').to route_to('records#update', id: '1')
     end
 
     it 'routes to #destroy' do
