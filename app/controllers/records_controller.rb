@@ -1,5 +1,4 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: %i[destroy]
 
   def index
     @comment = current_user.comments.build
@@ -12,7 +11,7 @@ class RecordsController < ApplicationController
         monitors = User.where(id: current_user.relationships.pluck(:monitor_id))
         @records = current_user.records.includes(comments: :user)
         @message = "#{monitors.map(&:name).join('さん、 ')}さんに監視されています"
-      end  
+      end
     else
       @records = []
       @message = '連携されていません！'
@@ -43,5 +42,4 @@ class RecordsController < ApplicationController
   def record_params
     params.require(:record).permit(:meal_image)
   end
-
 end
