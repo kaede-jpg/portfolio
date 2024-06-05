@@ -2,9 +2,9 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @record = @comment.record
-    unless @comment.save
-      render status: :unprocessable_entity
-    end
+    return if @comment.save
+
+    render status: :unprocessable_entity
   end
 
   def destroy

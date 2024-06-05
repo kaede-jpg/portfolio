@@ -1,19 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Comments', type: :request do
-
   let(:record) { create(:record) }
   let(:user) { create(:user) }
 
   let(:valid_attributes) do
     {
-      body: "body"
+      body: 'body'
     }
   end
 
   let(:invalid_attributes) do
     {
-      body: ""
+      body: ''
     }
   end
 
