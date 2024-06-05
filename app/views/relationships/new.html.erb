@@ -10,14 +10,20 @@
     <%= form_with model: current_user, url: relationships_invitation_code_path, data: { turbo: false } do |f| %>
         <%= render 'shared/error_message' , object: f.object %>
         <%= f.text_field :user_id, placeholder: "ユーザーID", class: "input input-bordered w-full max-w-xs" %>
-        <div class="flex items-center">
-            <%= f.radio_button :invitation_my_role, :monitor, checked: true, class: "radio checked:bg-red-500" %>
-            <%= f.label :invitation_my_role_monitor, "監視したい！" %>
-        </div>
-        <div  class="flex items-center">
-            <%= f.radio_button :invitation_my_role, :monitored, class: "radio checked:bg-red-500" %>
-            <%= f.label :invitation_my_role_monitored, "監視されたい！" %>
-        </div>
+        <% if current_user.related? %>
+            <div>
+                <%= current_user.invitation_my_role %>
+            </div>
+        <% else %>
+            <div class="flex items-center">
+                <%= f.radio_button :invitation_my_role, :monitor, checked: true, class: "radio checked:bg-red-500" %>
+                <%= f.label :invitation_my_role_monitor, "監視したい！" %>
+            </div>
+            <div  class="flex items-center">
+                <%= f.radio_button :invitation_my_role, :monitored, class: "radio checked:bg-red-500" %>
+                <%= f.label :invitation_my_role_monitored, "監視されたい！" %>
+            </div>
+        <% end %>
         <%= f.submit "コード発行", class: "btn" %>
     <% end %>
 </div>

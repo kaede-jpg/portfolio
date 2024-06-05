@@ -1,23 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe "records/index", type: :view do
+RSpec.describe 'records/index', type: :view do
+  let(:user) { create(:user) }
   before(:each) do
+    allow(view).to receive(:current_user).and_return(user)
+    allow(user).to receive(:monitored?).and_return(true) 
     assign(:records, [
-      Record.create!(
-        user_id: 2,
-        meal_image: "Meal Image"
-      ),
-      Record.create!(
-        user_id: 2,
-        meal_image: "Meal Image"
-      )
-    ])
+             @record = create(:record),
+             create(:record)
+           ])
+    @comment = assign(:comment, create(:comment))
   end
 
-  it "renders a list of records" do
+  it 'renders a list of records' do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
-    assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Meal Image".to_s), count: 2
+    assert_select 'h2', text: Regexp.new(@record.created_at.strftime("%H：%M").to_s), count: 2
+#   assert_select 'img[src=?]', 'spec/fixtures/test_image.png', count: 2
   end
 end

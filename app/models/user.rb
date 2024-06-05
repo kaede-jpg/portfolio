@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :relationships, foreign_key: :monitored_id, dependent: :destroy, inverse_of: :monitored
 
   has_many :records, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -19,7 +20,9 @@ class User < ApplicationRecord
   validates :user_id, presence: true, unless: :new_record?
 
   validates :invitation_digest, uniqueness: true, allow_nil: true
+
   enum invitation_my_role: { monitor: 0, monitored: 1 }
+  validate :role_change_restriction
 
   # 渡された文字列のハッシュ値を返す
   def self.digest(string)
@@ -36,4 +39,16 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
+  # 連携済か判定する
+  def related?
+    relationship || relationships.exists?
+  end
+
+  private
+
+  def role_change_restriction
+    return unless invitation_my_role_changed? && related?
+
+    errors.add(:role, 'cannot be changed because there are existing relationships')
+  end
 end

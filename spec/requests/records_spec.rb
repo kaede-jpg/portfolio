@@ -12,124 +12,83 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/records", type: :request do
-  
+RSpec.describe '/records', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Record. As you add validations to Record, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:user) { create(:user) }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:valid_attributes) do
+    {
+      meal_image: fixture_file_upload('spec/fixtures/test_image.png')
+    }
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
-      Record.create! valid_attributes
-      get records_url
+  let(:invalid_attributes) do
+    {
+      meal_image: ""
+    }
+  end
+
+  before do
+    disable_csrf_protection
+    request_login_as(user)
+  end
+
+  describe 'GET /index' do
+    it 'renders a successful response' do
+      create(:record)
+      get records_path
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
-      record = Record.create! valid_attributes
-      get record_url(record)
+  describe 'GET /new' do
+    it 'renders a successful response' do
+      get new_record_path
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_record_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /edit" do
-    it "renders a successful response" do
-      record = Record.create! valid_attributes
-      get edit_record_url(record)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Record" do
-        expect {
-          post records_url, params: { record: valid_attributes }
-        }.to change(Record, :count).by(1)
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Record' do
+        expect do
+          post records_path, params: { record: valid_attributes }
+        end.to change(Record, :count).by(1)
       end
 
-      it "redirects to the created record" do
-        post records_url, params: { record: valid_attributes }
-        expect(response).to redirect_to(record_url(Record.last))
+      it 'redirects to the created record' do
+        post records_path, params: { record: valid_attributes }
+        expect(response).to redirect_to(records_path)
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Record" do
-        expect {
-          post records_url, params: { record: invalid_attributes }
-        }.to change(Record, :count).by(0)
+    context 'with invalid parameters' do
+      it 'does not create a new Record' do
+        expect do
+          post records_path, params: { record: invalid_attributes }
+        end.to change(Record, :count).by(0)
       end
 
-    
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post records_url, params: { record: invalid_attributes }
+        post records_path, params: { record: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested record" do
-        record = Record.create! valid_attributes
-        patch record_url(record), params: { record: new_attributes }
-        record.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the record" do
-        record = Record.create! valid_attributes
-        patch record_url(record), params: { record: new_attributes }
-        record.reload
-        expect(response).to redirect_to(record_url(record))
-      end
+  describe 'DELETE /destroy' do
+    let!(:record) { create(:record, user_id: user.id) }
+    it 'destroys the requested record' do
+      expect do
+        delete record_path(record)
+      end.to change(Record, :count).by(-1)
     end
 
-    context "with invalid parameters" do
-    
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        record = Record.create! valid_attributes
-        patch record_url(record), params: { record: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    
-    end
-  end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested record" do
-      record = Record.create! valid_attributes
-      expect {
-        delete record_url(record)
-      }.to change(Record, :count).by(-1)
-    end
-
-    it "redirects to the records list" do
-      record = Record.create! valid_attributes
-      delete record_url(record)
-      expect(response).to redirect_to(records_url)
+    it 'redirects to the records list' do
+      delete record_path(record)
+      expect(response).to redirect_to(records_path)
     end
   end
 end
