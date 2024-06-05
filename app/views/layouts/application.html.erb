@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html  data-theme="cupcake">
+  <head>
+    <title>ぷに活監視システム</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+
+  <body>
+    <header>
+      <% if logged_in?%>
+        <%= render 'shared/header'%>
+      <% else %>
+        <%= render 'shared/before_login_header'%>
+      <% end %>
+    </header>
+    <div>
+      <% if flash[:notice] %>
+        <p id="notice" class="alert alert-success">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <%= flash[:notice] %>
+        </p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p id="alert" class="alert alert-error">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <%= flash[:alert] %>
+        </p>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>
