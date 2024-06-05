@@ -1,5 +1,4 @@
 class RecordsController < ApplicationController
-
   def index
     @comment = current_user.comments.build
     if current_user.related?
