@@ -1,0 +1,2 @@
+module StampedRecordsHelper
+end

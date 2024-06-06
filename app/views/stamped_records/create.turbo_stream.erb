@@ -1,0 +1,5 @@
+<%= turbo_stream.append "table-stamp-#{dom_id(@stamped_record.record)}" do %>
+  <div>
+    <%= render "stamped_records/stamp", stamp: @stamped_record.stamp %>
+  </div>
+<% end %>

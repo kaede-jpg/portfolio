@@ -10,7 +10,7 @@
   <%= week_calendar(number_of_weeks: 1, events: @records, attribute: :created_at,) do |date ,records| %>
     <%= date %>
     <% records.each do |record| %>
-      <%= render record, comment: @comment %>
+      <%= render record, comment: @comment, stamps: @stamps %>
     <% end %>
   <% end %>
 </div>

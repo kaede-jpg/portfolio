@@ -1,15 +1,16 @@
 class RecordsController < ApplicationController
 
   def index
+    @stamps = Stamp.all
     @comment = current_user.comments.build
     if current_user.related?
       if current_user.monitor?
         monitored = User.find_by(id: current_user.relationship.monitored_id)
-        @records = Record.where(user_id: monitored.id).includes(comments: :user)
+        @records = Record.where(user_id: monitored.id).includes(comments: :user, stamped_records: :stamp)
         @message = "#{monitored.name}さんを監視しています"
       else
         monitors = User.where(id: current_user.relationships.pluck(:monitor_id))
-        @records = current_user.records.includes(comments: :user)
+        @records = current_user.records.includes(comments: :user, stamped_record: :stamp)
         @message = "#{monitors.map(&:name).join('さん、 ')}さんに監視されています"
       end
     else
