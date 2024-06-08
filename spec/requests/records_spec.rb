@@ -26,7 +26,7 @@ RSpec.describe '/records', type: :request do
 
   let(:invalid_attributes) do
     {
-      meal_image: ""
+      meal_image: ''
     }
   end
 

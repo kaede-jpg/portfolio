@@ -1,0 +1,22 @@
+<dialog id="comment_modal_<%= dom_id record %>" class="modal modal-bottom">
+  <div class="modal-box">
+    <div class="flex flex-col gap-4 m-4">
+      <h3 class="font-bold text-lg">コメント一覧</h3>
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn">閉じる</button>
+        </form>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="table">
+          <tbody id="table-comment-<%= dom_id record %>">
+            <% record.comments.each do |comment| %>
+              <%= render comment %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <%= render 'comments/form', comment: comment, record: record %>
+    </div>
+  </div>
+</dialog>

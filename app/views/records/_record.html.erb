@@ -3,37 +3,22 @@
     <h2 class="card-title">
       <%= record.created_at.strftime("%H：%M") %>
     </h2>
+    <div class="btn">スタンプを非表示</div>
   </div>
-  <div id="<%= dom_id record %>">
+  <div>
+  <div id="<%= dom_id record %>" class="relative">
     <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
-  </div>
-  <div class="card-body">
-    <div class= "flex" id="table-stamp-<%= dom_id record %>">
-      <% record.stamped_records.each do |stamped_record| %>
-        <div>
-          <%= render "stamped_records/stamp", stamp: stamped_record.stamp %>
-        </div>
+    <div id="table-record_<%= dom_id record %>-stamps" class="absolute inset-0 grid grid-cols-8 grid-rows-8">
+      <% record.stamped_records.order(:created_at).limit(64).each do |stamped_record| %>
+        <%= render "stamped_records/stamp", stamp: stamped_record.stamp %>
       <% end %>
     </div>
+  </div>
+  </div>
+  <div class="card-body">
     <div class="card-actions place-content-end">
       <% if current_user.monitor? %>
-        <div class="collapse collapse-arrow border border-base-300 bg-base-200">
-          <input type="checkbox" /> 
-          <div class="collapse-title text-xl font-medium">
-            スタンプを送る
-          </div>
-          <div class="collapse-content">
-            <div class="carousel carousel-center p-4 space-x-4 bg-neutral rounded-box">
-              <% stamps.each do |stamp| %>
-                <div class="carousel-item w-1/6">
-                  <%= link_to record_stamped_records_path(record, stamp_id: stamp.id), data: { turbo_method: :post } do %>
-                    <%= render "stamped_records/stamp", stamp: stamp %>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
+        <%= render 'stamped_records/form', stamps: stamps, record: record %>
       <% else %>
         <%= link_to "削除", record_path(record), data: { turbo_method: :delete, turbo_confirm: "この記録を削除しますか？"}, class: "btn" %>
       <% end %>
@@ -42,21 +27,5 @@
   </div>
 </div>
 
-<dialog id="comment_modal_<%= dom_id record %>" class="modal modal-bottom">
-  <div class="modal-box">
-    <div class="flex flex-col gap-4 m-4">
-      <h3 class="font-bold text-lg">コメント一覧</h3>
-      <div class="modal-action">
-        <form method="dialog">
-          <button class="btn">閉じる</button>
-        </form>
-      </div>
-      <div id="table-comment-<%= dom_id record %>">
-        <% record.comments.each do |comment| %>
-          <%= render comment %>
-        <% end %>
-      </div>
-      <%= render 'comments/form', comment: comment, record: record %>
-    </div>
-  </div>
-</dialog>
+<%= render 'comments/comment_modal', comment: comment, record: record %>
+

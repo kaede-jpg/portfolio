@@ -1,11 +1,11 @@
 <div class="text-center bg-white text-lg text-red-600 font-bold py-2">
   <%= @message %>
 </div>
-<div>
-  <% if current_user.monitored? %>
+<% if current_user.monitored? %>
+  <div class="fixed bottom-8 right-8">
     <%= link_to "記録する！", new_record_path, class: "btn" %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 <div>
   <%= week_calendar(number_of_weeks: 1, events: @records, attribute: :created_at,) do |date ,records| %>
     <%= date %>

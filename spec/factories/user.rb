@@ -7,12 +7,11 @@ FactoryBot.define do
     password_confirmation { 'password' }
 
     trait :monitor do
-      invitation_my_role { "monitor" }
+      invitation_my_role { 'monitor' }
     end
 
     trait :monitored do
-      invitation_my_role { "monitored" }
+      invitation_my_role { 'monitored' }
     end
-
   end
 end

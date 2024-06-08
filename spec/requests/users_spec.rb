@@ -18,21 +18,21 @@ RSpec.describe '/users', type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) do
     {
-      user_id: "user_id",
-      name: "name",
-      email: "email@example.com",
-      password: "password",
-      password_confirmation: "password"
+      user_id: 'user_id',
+      name: 'name',
+      email: 'email@example.com',
+      password: 'password',
+      password_confirmation: 'password'
     }
   end
-  
+
   let(:invalid_attributes) do
     {
-      user_id: "user_id",
-      name: "",
-      email: "",
-      password: "p",
-      password_confirmation: "mismatch"
+      user_id: 'user_id',
+      name: '',
+      email: '',
+      password: 'p',
+      password_confirmation: 'mismatch'
     }
   end
 
@@ -105,14 +105,14 @@ RSpec.describe '/users', type: :request do
     context 'with valid parameters' do
       let(:new_attributes) do
         {
-          user_id: "user_id_2",
-          name: "name_2",
-          email: "email2@example.com",
-          password: "password2",
-          password_confirmation: "password2"
+          user_id: 'user_id_2',
+          name: 'name_2',
+          email: 'email2@example.com',
+          password: 'password2',
+          password_confirmation: 'password2'
         }
       end
-      let(:user){ create(:user) }
+      let(:user) { create(:user) }
       before do
         request_login_as(user)
       end
@@ -141,7 +141,7 @@ RSpec.describe '/users', type: :request do
   end
 
   describe 'DELETE /destroy' do
-    let(:user){ create(:user) }
+    let(:user) { create(:user) }
     before do
       request_login_as(user)
     end

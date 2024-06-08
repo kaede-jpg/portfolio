@@ -1,5 +1,4 @@
 class RecordsController < ApplicationController
-
   def index
     @stamps = Stamp.all
     @comment = current_user.comments.build
@@ -10,7 +9,7 @@ class RecordsController < ApplicationController
         @message = "#{monitored.name}さんを監視しています"
       else
         monitors = User.where(id: current_user.relationships.pluck(:monitor_id))
-        @records = current_user.records.includes(comments: :user, stamped_record: :stamp)
+        @records = current_user.records.includes(comments: :user, stamped_records: :stamp)
         @message = "#{monitors.map(&:name).join('さん、 ')}さんに監視されています"
       end
     else
