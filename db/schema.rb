@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_01_151458) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_05_100149) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_151458) do
     t.index ["monitored_id"], name: "index_relationships_on_monitored_id"
   end
 
+  create_table "stamped_records", force: :cascade do |t|
+    t.bigint "record_id", null: false
+    t.bigint "stamp_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_id"], name: "index_stamped_records_on_record_id"
+    t.index ["stamp_id"], name: "index_stamped_records_on_stamp_id"
+  end
+
+  create_table "stamps", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -101,4 +115,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_01_151458) do
   add_foreign_key "records", "users"
   add_foreign_key "relationships", "users", column: "monitor_id"
   add_foreign_key "relationships", "users", column: "monitored_id"
+  add_foreign_key "stamped_records", "records"
+  add_foreign_key "stamped_records", "stamps"
 end

@@ -1,39 +1,31 @@
-<div class="card card-compact bg-base-200 shadow-xl mx-auto">
+<div class="card card-compact bg-base-200 shadow-xl mx-auto max-w-md">
   <div class="card-body">
     <h2 class="card-title">
       <%= record.created_at.strftime("%H：%M") %>
     </h2>
+    <div class="btn">スタンプを非表示</div>
   </div>
-  <div id="<%= dom_id record %>">
+  <div>
+  <div id="<%= dom_id record %>" class="relative">
     <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
+    <div id="table-record_<%= dom_id record %>-stamps" class="absolute inset-0 grid grid-cols-8 grid-rows-8">
+      <% record.stamped_records.order(:created_at).limit(64).each do |stamped_record| %>
+        <%= render "stamped_records/stamp", stamp: stamped_record.stamp %>
+      <% end %>
+    </div>
+  </div>
   </div>
   <div class="card-body">
     <div class="card-actions place-content-end">
-      <button class="btn" onclick="modal_<%= dom_id record %>.showModal()">コメント</button>
       <% if current_user.monitor? %>
-        スタンプを送る
+        <%= render 'stamped_records/form', stamps: stamps, record: record %>
       <% else %>
         <%= link_to "削除", record_path(record), data: { turbo_method: :delete, turbo_confirm: "この記録を削除しますか？"}, class: "btn" %>
       <% end %>
+      <button class="btn" onclick="comment_modal_<%= dom_id record %>.showModal()">コメント</button>
     </div>
   </div>
 </div>
 
-<dialog id="modal_<%= dom_id record %>" class="modal modal-bottom">
-  <div class="modal-box">
-    <div class="flex flex-col gap-4 m-4">
-      <h3 class="font-bold text-lg">コメント一覧</h3>
-      <div class="modal-action">
-        <form method="dialog">
-          <button class="btn">閉じる</button>
-        </form>
-      </div>
-      <div id="table-comment-<%= dom_id record %>">
-        <% record.comments.each do |comment| %>
-          <%= render comment %>
-        <% end %>
-      </div>
-      <%= render 'comments/form', comment: comment, record: record %>
-    </div>
-  </div>
-</dialog>
+<%= render 'comments/comment_modal', comment: comment, record: record %>
+
