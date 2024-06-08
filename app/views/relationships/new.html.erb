@@ -15,13 +15,9 @@
                 <%= current_user.invitation_my_role %>
             </div>
         <% else %>
-            <div class="flex items-center">
-                <%= f.radio_button :invitation_my_role, :monitor, checked: true, class: "radio checked:bg-red-500" %>
-                <%= f.label :invitation_my_role_monitor, "監視したい！" %>
-            </div>
-            <div  class="flex items-center">
-                <%= f.radio_button :invitation_my_role, :monitored, class: "radio checked:bg-red-500" %>
-                <%= f.label :invitation_my_role_monitored, "監視されたい！" %>
+            <div class="join">
+                <%= f.radio_button :invitation_my_role, :monitor, aria: { label: "監視したい" }, checked: true, class: "join-item btn" %>
+                <%= f.radio_button :invitation_my_role, :monitored, aria: { label: "監視されたい" }, class: "join-item btn" %>
             </div>
         <% end %>
         <%= f.submit "コード発行", class: "btn" %>

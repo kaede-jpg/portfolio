@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :records, only: %i[index new create destroy] do
     resources :comments, only: %i[create destroy], shallow: true
+    resources :stamped_records, only: %i[create], shallow: true
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

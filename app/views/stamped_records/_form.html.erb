@@ -1,0 +1,17 @@
+<div class="collapse collapse-arrow border border-base-300 bg-base-200">
+    <input type="checkbox" /> 
+    <div class="collapse-title text-xl font-medium">
+    スタンプを送る
+    </div>
+    <div class="collapse-content">
+        <div class="carousel carousel-center p-4 space-x-4 bg-neutral rounded-box">
+            <% stamps.each do |stamp| %>
+            <div class="carousel-item w-1/6">
+                <%= link_to record_stamped_records_path(record, stamp_id: stamp.id), data: { turbo_method: :post } do %>
+                <%= render "stamped_records/stamp", stamp: stamp %>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

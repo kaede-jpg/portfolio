@@ -1,0 +1,3 @@
+<%= turbo_stream.append "table-record_#{dom_id(@stamped_record.record)}-stamps" do %>
+  <%= render "stamped_records/stamp", stamp: @stamped_record.stamp %>
+<% end %>
