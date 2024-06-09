@@ -4,16 +4,16 @@ class RecordsController < ApplicationController
     @comment = current_user.comments.build
     if current_user.related?
       if current_user.monitor?
-        monitored = User.find_by(id: current_user.relationship.monitored_id)
+        monitored = User.monitored_by(current_user)
         @records = Record.where(user_id: monitored.id).includes(comments: :user, stamped_records: :stamp)
         @message = "#{monitored.name}さんを監視しています"
       else
-        monitors = User.where(id: current_user.relationships.pluck(:monitor_id))
+        monitors = User.monitors_of(current_user)
         @records = current_user.records.includes(comments: :user, stamped_records: :stamp)
         @message = "#{monitors.map(&:name).join('さん、 ')}さんに監視されています"
       end
     else
-      @records = []
+      @records = current_user.records.includes(comments: :user, stamped_records: :stamp)
       @message = '連携されていません！'
     end
   end
