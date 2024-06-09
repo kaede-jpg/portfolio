@@ -13,7 +13,7 @@
     <% date_range.each_slice(7) do |week| %>
       <% has_today = week.include?(Date.today) %>
       <div class="text-center mb-2">
-        <%= link_to t('simple_calendar.previous', default: '＜'), calendar.url_for_previous_view, class: "btn  btn-xs" %>
+        <%= link_to t('simple_calendar.previous', default: '＜'), calendar.url_for_previous_view, class: "btn btn-xs" %>
       </div>
       <% week.each_with_index do |day,index| %>
         <% checked = (day == Date.today) || (!has_today && index == 3) %>

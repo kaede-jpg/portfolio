@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'oauth/callback' => 'oauths#callback'
   get 'oauth/:provider' => 'oauths#oauth', as: :auth_at_provider
 
-  resources :relationships, only: %i[new create]
+  resources :relationships, only: %i[create destroy]
+  get 'relationships/menu'
   patch 'relationships/invitation_code'
 
   resources :records, only: %i[index new create destroy] do

@@ -9,7 +9,7 @@
         <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
         <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
             <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-            <li><%= link_to "連携する", new_relationship_path %></li>
+            <li><%= link_to "連携の設定", relationships_menu_path %></li>
         </ul>
       </div>
     </div>

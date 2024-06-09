@@ -1,20 +1,21 @@
 class RelationshipsController < ApplicationController
   before_action :initialize_relationship
-  def new; end
+  def menu; end
 
   def create
     partner = User.find_by(user_id: relationship_params[:user_id])
     if valid_partner?(partner, relationship_params[:invitation_code])
       create_relationship(partner)
       if @relationship.save
+        current_user.save
         redirect_to records_path, notice: '連携しました'
       else
         flash.now[:alert] = '連携できませんでした'
-        render :new, status: :unprocessable_entity
+        render :menu, status: :unprocessable_entity
       end
     else
       flash.now[:alert] = '連携コードが正しくありません'
-      render :new, status: :unprocessable_entity
+      render :menu, status: :unprocessable_entity
     end
   end
 
@@ -25,13 +26,19 @@ class RelationshipsController < ApplicationController
         render :invitation_code
       else
         flash.now[:alert] = '連携コードを発行出来ませんでした'
-        render :new, status: :unprocessable_entity
+        render :menu, status: :unprocessable_entity
       end
     else
       current_user.errors.add(:role, 'を選択してください')
       flash.now[:alert] = '連携コードを発行出来ませんでした'
-      render :new, status: :unprocessable_entity
+      render :menu, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @relationship = Relationship.find(params[:id])
+    @relationship.destroy!
+    redirect_to records_path, notice: '連携を解除しました'
   end
 
   private
@@ -46,6 +53,12 @@ class RelationshipsController < ApplicationController
 
   def initialize_relationship
     @relationship = Relationship.new
+    return unless current_user.related?
+    if current_user.monitor?
+      @monitored_user = User.monitored_by(current_user)
+    else
+      @monitor_users = User.monitors_of(current_user)
+    end
   end
 
   def valid_partner?(partner, invitation_code)
@@ -55,8 +68,10 @@ class RelationshipsController < ApplicationController
   def create_relationship(partner)
     if partner.invitation_my_role == 'monitor'
       @relationship = Relationship.new(monitor_id: partner.id, monitored_id: current_user.id)
+      current_user.invitation_my_role = 'monitored'
     elsif partner.invitation_my_role == 'monitored'
       @relationship = Relationship.new(monitor_id: current_user.id, monitored_id: partner.id)
+      current_user.invitation_my_role = 'monitor'
     end
   end
 
