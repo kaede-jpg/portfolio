@@ -1,0 +1,13 @@
+<div class="flex flex-wrap p-2 bg-base-100 rounded-box">
+    <% record.stamped_records.group(:stamp_id).count.sort_by { |_, count| -count }.each do |stamp_id, count| %>
+        <% stamp = stamps.find(stamp_id) %>
+        <div class="flex items-center">
+            <div class="w-14">
+                <%= render  "stamped_records/stamp", stamp: stamp %>
+            </div>
+            <div id="count-<%= dom_id record %>-<%= dom_id stamp %>">
+                <%= count %>
+            </div>
+        </div>
+    <% end %>
+</div>

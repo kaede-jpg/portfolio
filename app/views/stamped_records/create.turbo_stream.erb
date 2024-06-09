@@ -1,3 +1,7 @@
-<%= turbo_stream.append "table-record_#{dom_id(@stamped_record.record)}-stamps" do %>
+<%= turbo_stream.append "stamps-#{dom_id(@stamped_record.record)}" do %>
   <%= render "stamped_records/stamp", stamp: @stamped_record.stamp %>
+<% end %>
+
+<%= turbo_stream.replace "count-#{dom_id(@stamped_record.record)}-#{dom_id(@stamped_record.stamp)}" do %>
+  <%= @stamped_records.count %>
 <% end %>
