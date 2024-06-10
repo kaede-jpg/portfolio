@@ -3,7 +3,7 @@ class Record < ApplicationRecord
 
   validates :meal_image, presence: true, blob: { content_type: :image }
 
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :stamped_records, dependent: :destroy
 end

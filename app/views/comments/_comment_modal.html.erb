@@ -9,7 +9,7 @@
       </div>
       <div class="overflow-x-auto">
         <table class="table">
-          <tbody id="table-comment-<%= dom_id record %>">
+          <tbody id="comment-table-<%= dom_id record %>">
             <% record.comments.each do |comment| %>
               <%= render comment %>
             <% end %>

@@ -5,18 +5,17 @@
     </h2>
     <div class="btn">スタンプを非表示</div>
   </div>
-  <div>
   <div id="<%= dom_id record %>" class="relative">
     <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
-    <div id="table-record_<%= dom_id record %>-stamps" class="absolute inset-0 grid grid-cols-8 grid-rows-8">
+    <div id="stamps-<%= dom_id record %>" class="absolute inset-0 grid grid-cols-8 grid-rows-8">
       <% record.stamped_records.order(:created_at).limit(64).each do |stamped_record| %>
         <%= render "stamped_records/stamp", stamp: stamped_record.stamp %>
       <% end %>
     </div>
   </div>
-  </div>
-  <div class="card-body">
+  <div class="card-body mt-2">
     <div class="card-actions place-content-end">
+      <%= render 'stamped_records/stamps_table', stamps: stamps, record: record %>
       <% if current_user.monitor? %>
         <%= render 'stamped_records/form', stamps: stamps, record: record %>
       <% else %>

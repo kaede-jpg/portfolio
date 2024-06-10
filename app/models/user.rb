@@ -24,6 +24,9 @@ class User < ApplicationRecord
   enum invitation_my_role: { monitor: 0, monitored: 1 }
   validate :role_change_restriction
 
+  scope :monitored_by, ->(user) { find(user.relationship.monitored_id) }
+  scope :monitors_of, ->(user) { where(id: user.relationships.pluck(:monitor_id)) }
+
   # 渡された文字列のハッシュ値を返す
   def self.digest(string)
     cost = if ActiveModel::SecurePassword.min_cost
