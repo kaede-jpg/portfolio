@@ -1,10 +1,7 @@
-<h1>Editing user</h1>
-
+<h1><%= t('.title') %></h1>
 <%= render "form", user: @user %>
-
 <br>
-
 <div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
+  <%= link_to t('.show_user'), @user, class: "btn" %> |
+  <%= link_to "To users", users_path, class: "btn" %>
 </div>

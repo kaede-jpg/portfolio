@@ -3,7 +3,7 @@
 </div>
 <% if current_user.monitored? %>
   <div class="fixed bottom-8 right-8">
-    <%= link_to "記録する！", new_record_path, class: "btn" %>
+    <%= link_to t('.create_record'), new_record_path, class: "btn" %>
   </div>
 <% end %>
 <div>

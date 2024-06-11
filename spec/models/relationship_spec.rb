@@ -25,7 +25,7 @@ RSpec.describe Relationship, type: :model do
           relationship = create(:relationship)
           relationship_with_duplicated_monitor = build(:relationship, monitor_id: relationship.monitor_id, monitored_id: create(:user).id)
           expect(relationship_with_duplicated_monitor).to be_invalid
-          expect(relationship_with_duplicated_monitor.errors[:monitor_id]).to eq ['has already been taken']
+          expect(relationship_with_duplicated_monitor.errors[:monitor_id]).to eq ['はすでに存在します']
         end
         it 'monitored_idに既存の場合にバリデーションが機能してinvalidになるか' do
           relationship = create(:relationship)

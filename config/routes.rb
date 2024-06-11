@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :relationships, only: %i[create destroy]
   get 'relationships/menu'
-  patch 'relationships/invitation_code'
+  patch 'relationships/relationship_code'
 
   resources :records, only: %i[index new create destroy] do
     resources :comments, only: %i[create destroy], shallow: true
