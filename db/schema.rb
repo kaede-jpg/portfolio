@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_05_100149) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_11_075841) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,12 +99,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_05_100149) do
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "invitation_digest"
-    t.datetime "invitation_made_at"
-    t.integer "invitation_my_role"
+    t.string "relationship_digest"
+    t.datetime "relationship_code_made_at"
+    t.integer "role"
     t.string "user_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["invitation_digest"], name: "index_users_on_invitation_digest", unique: true
+    t.index ["relationship_digest"], name: "index_users_on_relationship_digest", unique: true
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 

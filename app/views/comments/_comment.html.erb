@@ -1,9 +1,8 @@
 <tr id="<%= dom_id comment %>">
     <td><%= comment.user.name%></td>
     <td><%= comment.body %></td>
+    <td><%= l comment.created_at %></td>
     <% if current_user == comment.user%>
-        <td>
-            <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "コメントを削除しますか？"}, class: "btn" %>
-        </td>
+        <td><%= link_to t('helpers.submit.delete'), comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t('activerecord.models.comment') + t('helpers.message.delete_confirm')}, class: "btn" %></td>
     <% end %>
 </tr>

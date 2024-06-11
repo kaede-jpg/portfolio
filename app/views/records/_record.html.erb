@@ -1,9 +1,9 @@
 <div class="card card-compact bg-base-200 shadow-xl mx-auto max-w-md">
   <div class="card-body">
     <h2 class="card-title">
-      <%= record.created_at.strftime("%H：%M") %>
+      <%= l record.created_at, format: :time %>
     </h2>
-    <div class="btn">スタンプを非表示</div>
+    <div class="btn"><%= t('.hide_stamps') %></div>
   </div>
   <div id="<%= dom_id record %>" class="relative">
     <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
@@ -19,9 +19,9 @@
       <% if current_user.monitor? %>
         <%= render 'stamped_records/form', stamps: stamps, record: record %>
       <% else %>
-        <%= link_to "削除", record_path(record), data: { turbo_method: :delete, turbo_confirm: "この記録を削除しますか？"}, class: "btn" %>
+        <%= link_to t('helpers.submit.delete'), record_path(record), data: { turbo_method: :delete, turbo_confirm: t('activerecord.models.record') + t('helpers.message.delete_confirm')}, class: "btn" %>
       <% end %>
-      <button class="btn" onclick="comment_modal_<%= dom_id record %>.showModal()">コメント</button>
+      <button class="btn" onclick="comment_modal_<%= dom_id record %>.showModal()"><%= t('activerecord.models.comment') %></button>
     </div>
   </div>
 </div>

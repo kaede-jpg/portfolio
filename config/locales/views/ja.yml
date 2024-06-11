@@ -1,0 +1,76 @@
+ja:
+  helpers:
+    title: ぷに活監視システム
+    submit:
+      register: 登録
+      submit: 保存
+      create: 発行
+      update: 更新
+      delete: 削除
+      close: 閉じる
+    label:
+      email: メールアドレス
+      password: パスワード
+      user_id: ユーザーID
+      monitor: 監視する
+      monitored: 監視される
+    message:
+      delete_confirm: を削除しますか？
+      disengage_confirm: との連携を解除しますか？
+  shared:
+    header:
+      logout: ログアウト
+    before_login_header:
+      login: ログイン
+  users:
+    index:
+      title: ユーザー一覧
+      show_user: 詳細
+      to_register_page: 登録ページへ
+    show:
+      title: ユーザー詳細
+      edit_user: 編集
+    new:
+      title: ユーザー登録
+      create_with_line: LINEで登録
+      to_login_page: ログインページへ
+    edit:
+      title: ユーザー編集
+      show_user: 詳細
+  user_sessions:
+    new:
+      title: ログイン
+      login_with_line: LINEでログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+    form:
+      login: ログイン
+  relationships:
+    menu:
+      title: 連携の設定
+      create_relationship: 連携する
+      with_code: 連携コードをお持ちですか？
+      partner_userid: パートナーのユーザーID
+      without_code: 持っていないので、連携コードを発行する
+      placeholder_userid: ユニークなIDを作成してください
+      information_of_change_role: 役割の変更には連携の解除が必要です。
+      delete_relationship: 連携を解除する
+      no_relationship: 連携されていません
+    relationship_code:
+      information_of_relationship: こちらをパートナーの連携コード入力欄に入力してください。
+  records:
+    index:
+      create_record: 記録する！
+    new:
+      title: 記録
+      back_to_records: 記録一覧へ戻る
+    record:
+      hide_stamps: スタンプを非表示
+  comments:
+    comment_modal:
+      title: コメント一覧
+    form:
+      placeholder: コメントを入力
+  stamped_records:
+      form:
+        title: スタンプを送る

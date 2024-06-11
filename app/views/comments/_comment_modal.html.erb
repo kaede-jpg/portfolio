@@ -1,10 +1,10 @@
 <dialog id="comment_modal_<%= dom_id record %>" class="modal modal-bottom">
   <div class="modal-box">
     <div class="flex flex-col gap-4 m-4">
-      <h3 class="font-bold text-lg">コメント一覧</h3>
+      <h3 class="font-bold text-lg"><%= t('.title') %></h3>
       <div class="modal-action">
         <form method="dialog">
-          <button class="btn">閉じる</button>
+          <button class="btn"><%= t('helpers.submit.close') %></button>
         </form>
       </div>
       <div class="overflow-x-auto">

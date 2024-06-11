@@ -14,7 +14,7 @@ RSpec.describe 'records/index', type: :view do
 
   it 'renders a list of records' do
     render
-    assert_select 'h2', text: Regexp.new(@record.created_at.strftime('%H：%M').to_s), count: 2
+    assert_select 'h2', text: Regexp.new(@record.created_at.strftime('%H:%M').to_s), count: 2
     #   assert_select 'img[src=?]', 'spec/fixtures/test_image.png', count: 2
   end
 end

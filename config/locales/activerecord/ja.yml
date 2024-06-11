@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      relationship: 連携
+      record: 記録
+      comment: コメント
+      stamp: スタンプ
+      stamped_record: スタンプ
+    attributes:
+      user:
+        name: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        created_at: 作成日時
+        relationship_code: 連携コード
+        role: 役割
+        user_id: ユーザーID
+  enums:
+    user:
+      role:
+        monitor: 監視する
+        monitored: 監視される
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      time: "%H:%M"

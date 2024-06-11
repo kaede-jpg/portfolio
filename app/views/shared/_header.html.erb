@@ -1,15 +1,15 @@
 <div class="navbar bg-base-300 rounded-box">
   <div class="flex-1 px-2 lg:flex-none">
-    <%= link_to "ぷに活監視システム", records_path, class:"btn btn-ghost text-xl" %>
+    <%= link_to t('helpers.title'), records_path, class:"btn btn-ghost text-xl" %>
   </div> 
   <div class="flex justify-end flex-1 px-2">
     <div class="flex items-stretch">
-      <%= link_to "ログアウト", :logout, data: { turbo_method: :delete }, class:"btn btn-ghost rounded-btn" %>
+      <%= link_to t('.logout'), :logout, data: { turbo_method: :delete }, class:"btn btn-ghost rounded-btn" %>
       <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
+        <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><i class="fa-solid fa-bars"></i></div>
         <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-            <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-            <li><%= link_to "連携の設定", relationships_menu_path %></li>
+            <li><%= link_to t('users.edit.title'), edit_user_path(current_user.id) %></li>
+            <li><%= link_to t('relationships.menu.title'), relationships_menu_path %></li>
         </ul>
       </div>
     </div>
