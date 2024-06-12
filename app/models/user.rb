@@ -47,6 +47,10 @@ class User < ApplicationRecord
     relationship || relationships.exists?
   end
 
+  # LINE連携済か判定する
+  def linked_line?
+    authentications && authentications.pluck(:provider).include?('line')
+  end
   private
 
   def role_change_restriction

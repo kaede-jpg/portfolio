@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      login(user_params[:user_id], user_params[:password])
       redirect_to(:users, notice: t('activerecord.models.user') + t('notice.create'))
     else
       flash.now[:alert] = t('activerecord.models.user') + t('alert.create_failed')
