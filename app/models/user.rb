@@ -49,7 +49,7 @@ class User < ApplicationRecord
 
   # LINE連携済か判定する
   def linked_line?
-    authentications && authentications.pluck(:provider).include?('line')
+    authentications && Authentication.line_of(self)
   end
   private
 
