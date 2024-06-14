@@ -51,6 +51,7 @@ class User < ApplicationRecord
   def linked_line?
     authentications && Authentication.line_of(self)
   end
+
   private
 
   def role_change_restriction
