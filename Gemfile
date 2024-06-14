@@ -48,6 +48,8 @@ gem 'image_processing', '~> 1.2'
 
 gem 'aws-sdk-s3'
 
+gem 'line-bot-api'
+gem 'rails-i18n'
 gem 'simple_calendar'
 gem 'sorcery', '~> 0.17.0'
 

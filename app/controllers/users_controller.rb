@@ -17,25 +17,26 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to(:users, notice: 'User was successfully created')
+      login(user_params[:user_id], user_params[:password])
+      redirect_to(:users, notice: t('activerecord.models.user') + t('notice.create'))
     else
-      flash.now[:alert] = 'User signin failed'
+      flash.now[:alert] = t('activerecord.models.user') + t('alert.create_failed')
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to(:users, notice: 'User was successfully updated')
+      redirect_to(:users, notice: t('activerecord.models.user') + t('notice.update'))
     else
-      flash.now[:alert] = 'User update failed'
+      flash.now[:alert] = t('activerecord.models.user') + t('notice.update_failed')
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @user.destroy!
-    redirect_to(:users, notice: 'User was successfully destroyed', status: :see_other)
+    redirect_to(:users, notice: t('activerecord.models.user') + t('notice.destroy'), status: :see_other)
   end
 
   private

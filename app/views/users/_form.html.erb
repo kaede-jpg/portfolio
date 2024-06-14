@@ -1,6 +1,5 @@
 <%= form_with(model: user) do |f| %>
   <%= render 'shared/error_message' , object: f.object %>
-
   <div>
     <%= f.label :user_id, style: "display: block" %>
     <%= f.text_field :user_id %>
@@ -25,7 +24,6 @@
   </div>
 
   <div>
-    <%= f.submit %>
+    <%= f.submit t('helpers.submit.register'), class: "btn" %>
   </div>
 <% end %>
-<%= link_to 'Create with Line', auth_at_provider_path(provider: :line) %>

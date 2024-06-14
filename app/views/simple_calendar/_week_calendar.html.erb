@@ -1,7 +1,7 @@
 <div class="simple-calendar">
   <div class="calendar-heading flex flex-col items-center justify-center">
     <span class="calendar-title font-bold">
-      <%= t('date.month_names')[start_date.month] %> <%= start_date.year %>
+      <%= start_date.year.to_s + t('datetime.prompts.year') %> <%= t('date.month_names')[start_date.month] %>
     </span>
 
     <nav>

@@ -1,7 +1,7 @@
 <div id="comment-form-<%= dom_id record %>">
     <%= form_with model: comment, url: record_comments_path(record) do |f| %>
         <%= render 'shared/error_message' , object: f.object %>
-        <%= f.text_field :body, placeholder: "コメントを入力", class: "input input-bordered w-5/6" %>
-        <%= f.submit "投稿", class: "btn" %>
+        <%= f.text_field :body, placeholder: t('.placeholder'), class: "input input-bordered w-5/6" %>
+        <%= f.submit t('helpers.submit.submit'), class: "btn" %>
     <% end %>
 </div>

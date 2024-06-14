@@ -1,0 +1,28 @@
+ja:
+  notice:
+    login_successful: ログインしました
+    external_login_successful: でログインしました
+    logged_out: ログアウトしました
+    link_line_successful: アカウントと連携しました
+    create: を作成しました
+    update: を更新しました
+    destroy: を削除しました
+    create_relationship: 連携しました
+    delete_relationship: 連携を解除しました
+  alert:
+    not_authenticated: ログインしてください
+    login_failed: ログインに失敗しました
+    external_login_failed: でのログインに失敗しました
+    link_line_failed: アカウントとの連携に失敗しました
+    create_failed: の作成に失敗しました
+    update_failed: の更新に失敗しました
+    create_code_failed: 連携コードを発行出来ませんでした
+    select: を選択してください
+    create_relationship_failed: 連携できませんでした
+    not_correct_code: 連携コードが正しくありません
+  message:
+    monitor: さんを監視しています
+    monitored_from: さんに監視されています
+    and: さん、 
+    not_related: 連携されていません！
+    

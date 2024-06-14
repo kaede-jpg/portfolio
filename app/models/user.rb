@@ -19,9 +19,9 @@ class User < ApplicationRecord
   validates :user_id, uniqueness: true
   validates :user_id, presence: true, unless: :new_record?
 
-  validates :invitation_digest, uniqueness: true, allow_nil: true
+  validates :relationship_digest, uniqueness: true, allow_nil: true
 
-  enum invitation_my_role: { monitor: 0, monitored: 1 }
+  enum role: { monitor: 0, monitored: 1 }
   validate :role_change_restriction
 
   scope :monitored_by, ->(user) { find(user.relationship.monitored_id) }
@@ -47,11 +47,16 @@ class User < ApplicationRecord
     relationship || relationships.exists?
   end
 
+  # LINE連携済か判定する
+  def linked_line?
+    authentications && Authentication.line_of(self)
+  end
+
   private
 
   def role_change_restriction
-    return unless invitation_my_role_changed? && related?
+    return unless role_changed? && related?
 
-    errors.add(:role, 'cannot be changed because there are existing relationships')
+    errors.add(:role, 'は連携されているため変更できません')
   end
 end
