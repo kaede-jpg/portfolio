@@ -7,9 +7,7 @@ class LinebotJob < ApplicationJob
     users = User.monitors_of(user)
     message = {
                 type: 'text',
-                text: "#{user.name}さんが食事の記録を行いました！\n
-                       さっそくリアクションしましょう！\n
-                       #{records_url}"
+                text: "#{user.name}さんが食事を記録しました！\nさっそくリアクションしましょう！\n#{records_url}"
             }
     users.each do |user|
       if user.linked_line?
