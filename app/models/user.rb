@@ -49,7 +49,7 @@ class User < ApplicationRecord
 
   # LINE連携済か判定する
   def linked_line?
-    authentications.exists? && Authentication.line_of(self).exists?
+    authentications.exists? && Authentication.line_of(self).present?
   end
 
   private
