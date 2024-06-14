@@ -76,12 +76,12 @@ class RelationshipsController < ApplicationController
   end
 
   def create_relationship(partner)
-    if partner.role == 'monitor'
+    if partner.monitor?
       @relationship = Relationship.new(monitor_id: partner.id, monitored_id: current_user.id)
-      current_user.role = 'monitored'
-    elsif partner.role == 'monitored'
+      current_user.monitored!
+    elsif partner.monitored?
       @relationship = Relationship.new(monitor_id: current_user.id, monitored_id: partner.id)
-      current_user.role = 'monitor'
+      current_user.monitor!
     end
   end
 end
