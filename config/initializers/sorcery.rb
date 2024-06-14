@@ -219,11 +219,11 @@ Rails.application.config.sorcery.configure do |config|
   # config.salesforce.scope = "full"
   # config.salesforce.user_info_mapping = {:email => "email"}
 
-  config.line.key = Rails.application.credentials.dig(:line, :channel_id)
-  config.line.secret = Rails.application.credentials.dig(:line, :channel_secret)
+  config.line.key = Rails.application.credentials.dig(:line, :login_channel_id)
+  config.line.secret = Rails.application.credentials.dig(:line, :login_channel_secret)
   config.line.callback_url = Rails.application.credentials.dig(Rails.env.to_sym, :sorcery, :line_callback_url)
   config.line.scope = 'profile'
-  # config.line.bot_prompt = "normal"
+  config.line.bot_prompt = 'aggressive'
   config.line.user_info_mapping = {
     name: 'displayName',
     email: 'userId'

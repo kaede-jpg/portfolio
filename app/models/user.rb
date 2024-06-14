@@ -49,13 +49,14 @@ class User < ApplicationRecord
 
   # LINE連携済か判定する
   def linked_line?
-    authentications && authentications.pluck(:provider).include?('line')
+    authentications && Authentication.line_of(self)
   end
+
   private
 
   def role_change_restriction
     return unless role_changed? && related?
 
-    errors.add(:role, 'cannot be changed because there are existing relationships')
+    errors.add(:role, 'は連携されているため変更できません')
   end
 end

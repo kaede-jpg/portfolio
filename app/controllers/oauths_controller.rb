@@ -7,11 +7,11 @@ class OauthsController < ApplicationController
 
   def callback
     provider = auth_params[:provider]
-   if logged_in?
-    link_line_account(provider)
-   else
-    login_with_line(provider)
-   end
+    if logged_in?
+      link_line_account(provider)
+    else
+      login_with_line(provider)
+    end
   end
 
   private
