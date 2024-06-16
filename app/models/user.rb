@@ -13,11 +13,11 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
-  validates :user_id, uniqueness: true
-  validates :user_id, presence: true, unless: :new_record?
+  validates :user_id, uniqueness: true, presence: true
 
   validates :relationship_digest, uniqueness: true, allow_nil: true
 
@@ -57,6 +57,6 @@ class User < ApplicationRecord
   def role_change_restriction
     return unless role_changed? && related?
 
-    errors.add(:role, 'は連携されているため変更できません')
+    errors.add(:role, t('alert.related_user'))
   end
 end
