@@ -13,6 +13,8 @@
             <% unless current_user.linked_line? %>
               <li><%= link_to t('.login_with_line'), auth_at_provider_path(provider: :line), class: "btn" %></li>
             <% end %>
+            <div class="line-it-button" data-lang="ja" data-type="friend" data-env="REAL"   data-lineId="@127susri" style="display: none;"></div>
+            <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
         </ul>
       </div>
     </div>

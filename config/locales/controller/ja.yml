@@ -9,6 +9,8 @@ ja:
     destroy: を削除しました
     create_relationship: 連携しました
     delete_relationship: 連携を解除しました
+    mail_password_reset_successful: パスワードリセットのメールを送信しました
+    password_reset_successful: パスワードがリセットされました
   alert:
     not_authenticated: ログインしてください
     login_failed: ログインに失敗しました
@@ -20,9 +22,12 @@ ja:
     select: を選択してください
     create_relationship_failed: 連携できませんでした
     not_correct_code: 連携コードが正しくありません
+    related_user: は連携されているため変更できません
   message:
     monitor: さんを監視しています
     monitored_from: さんに監視されています
     and: さん、 
     not_related: 連携されていません！
+  mailer:
+    password_reset: パスワード再発行
     

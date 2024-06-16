@@ -8,6 +8,7 @@ ja:
       update: 更新
       delete: 削除
       close: 閉じる
+      send: 送信
     label:
       email: メールアドレス
       password: パスワード
@@ -45,6 +46,11 @@ ja:
       password_forget: パスワードをお忘れの方はこちら
     form:
       login: ログイン
+  password_resets:
+    new:
+      title: パスワードリセット申請
+    edit:
+      title: パスワード再設定
   relationships:
     menu:
       title: 連携の設定
