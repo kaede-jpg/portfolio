@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[index new create activate]
+  skip_before_action :require_login, only: %i[new create activate]
   before_action :set_user, only: %i[show edit update destroy]
-
-  def index
-    @users = User.all
-  end
 
   def show; end
 
@@ -29,7 +25,7 @@ class UsersController < ApplicationController
       if @user.previous_changes[:email]
         render :send_activation, status: :unprocessable_entity
       else
-        redirect_to(:users, notice: t('activerecord.models.user') + t('notice.update'))
+        redirect_to(:user, notice: t('activerecord.models.user') + t('notice.update'))
       end
     else
       flash.now[:alert] = t('activerecord.models.user') + t('alert.update_failed')
@@ -39,13 +35,13 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy!
-    redirect_to(:users, notice: t('activerecord.models.user') + t('notice.destroy'), status: :see_other)
+    redirect_to(root_path, notice: t('activerecord.models.user') + t('notice.destroy'), status: :see_other)
   end
 
   def activate
-    if @user = User.load_from_activation_token(params[:id])
+    if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
-      redirect_to(login_path, :notice => t('notice.activation_success'))
+      redirect_to(login_path, notice: t('notice.activation_success'))
     else
       not_authenticated
     end
@@ -54,7 +50,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def user_params

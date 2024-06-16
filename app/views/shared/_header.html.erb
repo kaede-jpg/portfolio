@@ -8,7 +8,7 @@
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><i class="fa-solid fa-bars"></i></div>
         <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-            <li><%= link_to t('users.edit.title'), edit_user_path(current_user.id) %></li>
+            <li><%= link_to t('users.show.title'), user_path %></li>
             <li><%= link_to t('relationships.menu.title'), relationships_menu_path %></li>
             <% unless current_user.linked_line? %>
               <li><%= link_to t('.login_with_line'), auth_at_provider_path(provider: :line), class: "btn" %></li>

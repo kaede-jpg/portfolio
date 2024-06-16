@@ -29,7 +29,7 @@ ja:
       show_user: 詳細
       to_register_page: 登録ページへ
     show:
-      title: ユーザー詳細
+      title: ユーザー情報
       edit_user: 編集
     new:
       title: ユーザー登録

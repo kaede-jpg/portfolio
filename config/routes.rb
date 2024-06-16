@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :users do
+  resource :user do
     member do
       get :activate
     end
-   end
+  end
   resources :password_resets, only: %i[new create edit update]
 
   get 'login' => 'user_sessions#new', as: :login

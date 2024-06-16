@@ -2,7 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   before_update :setup_activation, if: -> { email_changed? }
-  after_update :send_activation_needed_email!, if: -> { previous_changes["email"].present? }
+  after_update :send_activation_needed_email!, if: -> { previous_changes['email'].present? }
 
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications

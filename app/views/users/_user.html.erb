@@ -7,8 +7,10 @@
     <strong><%= t('activerecord.attributes.user.name') %>:</strong>
     <%= user.name %>
   </p>
-  <p>
-    <strong><%= t('activerecord.attributes.user.email') %>:</strong>
-    <%= user.email %>
-  </p>
+  <% if user.crypted_password %>
+    <p>
+      <strong><%= t('activerecord.attributes.user.email') %>:</strong>
+      <%= user.email %>
+    </p>
+  <% end %>
 </div>
