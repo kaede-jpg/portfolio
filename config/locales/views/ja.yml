@@ -69,12 +69,11 @@ ja:
       information_of_relationship: こちらをパートナーの連携コード入力欄に入力してください。
   records:
     index:
-      create_record: 記録する！
-    new:
-      title: 記録
-      back_to_records: 記録一覧へ戻る
+      create_record: 記録する
     record:
       hide_stamps: スタンプを非表示
+    new_modal:
+      create_record: 記録する
   comments:
     comment_modal:
       title: コメント一覧

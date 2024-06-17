@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'relationships/menu'
   patch 'relationships/relationship_code'
 
-  resources :records, only: %i[index new create destroy] do
+  resources :records, only: %i[index create destroy] do
     resources :comments, only: %i[create destroy], shallow: true
     resources :stamped_records, only: %i[create], shallow: true
   end
