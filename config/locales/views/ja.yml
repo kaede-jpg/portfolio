@@ -29,7 +29,7 @@ ja:
       show_user: 詳細
       to_register_page: 登録ページへ
     show:
-      title: ユーザー詳細
+      title: ユーザー情報
       edit_user: 編集
     new:
       title: ユーザー登録
@@ -38,6 +38,9 @@ ja:
     edit:
       title: ユーザー編集
       show_user: 詳細
+    send_activation:
+      title: メールアドレス確認用メールを送信しました
+      complete_process: メールに記載のリンクから操作を完了してください
   user_sessions:
     new:
       title: ログイン
@@ -66,12 +69,11 @@ ja:
       information_of_relationship: こちらをパートナーの連携コード入力欄に入力してください。
   records:
     index:
-      create_record: 記録する！
-    new:
-      title: 記録
-      back_to_records: 記録一覧へ戻る
+      create_record: 記録する
     record:
       hide_stamps: スタンプを非表示
+    new_modal:
+      create_record: 記録する
   comments:
     comment_modal:
       title: コメント一覧

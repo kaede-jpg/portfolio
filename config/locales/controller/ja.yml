@@ -4,12 +4,13 @@ ja:
     external_login_successful: でログインしました
     logged_out: ログアウトしました
     link_line_successful: アカウントと連携しました
+    activation_success: メールアドレスの確認ができました
     create: を作成しました
     update: を更新しました
     destroy: を削除しました
     create_relationship: 連携しました
     delete_relationship: 連携を解除しました
-    mail_password_reset_successful: パスワードリセットのメールを送信しました
+    mail_password_reset_successful: パスワード再発行用メールを送信しました
     password_reset_successful: パスワードがリセットされました
   alert:
     not_authenticated: ログインしてください
@@ -30,4 +31,7 @@ ja:
     not_related: 連携されていません！
   mailer:
     password_reset: パスワード再発行
+    activation_needed: メールアドレス確認
+    activation_success: メールアドレスが確認されました
+
     
