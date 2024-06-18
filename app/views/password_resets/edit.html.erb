@@ -5,10 +5,10 @@
     <%= @user.email %>
 
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class:"input input-bordered" %>
 
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class:"input input-bordered" %>
 
-    <%= f.submit t('helpers.submit.update') %>
+    <%= f.submit t('helpers.submit.update'), class:"btn" %>
 <% end %>

@@ -21,6 +21,7 @@ ja:
   shared:
     header:
       logout: ログアウト
+      login_with_line: LINEと連携
     before_login_header:
       login: ログイン
   users:

@@ -1,10 +1,12 @@
-<div class="navbar bg-base-300 rounded-box">
-  <div class="flex-1 px-2 lg:flex-none">
-    <%= link_to t('helpers.title'), root_path, class:"btn btn-ghost text-xl" %>
+<div class="navbar h-16 py-2 bg-base-300 rounded-box">
+  <div class="px-2 w-full h-full">
+    <%= link_to root_path, class: "w-full h-full" do %>
+      <%= image_tag "title_logo.png", class: "object-contain object-left w-full h-full" %>
+    <% end %>
   </div> 
-  <div class="flex justify-end flex-1 px-2">
-    <div class="flex items-stretch">
-      <%= link_to t('.login'), :login, class:"btn btn-ghost rounded-btn" %>
+  <div class="px-2">
+    <div class="flex">
+      <%= link_to t('.login'), :login, class:"btn btn-primary btn-sm rounded-btn" %>
     </div>
   </div>
 </div>
