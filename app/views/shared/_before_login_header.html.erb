@@ -1,12 +1,10 @@
-<div class="navbar h-16 py-2 bg-base-300 rounded-box">
-  <div class="px-2 w-full h-full">
-    <%= link_to root_path, class: "w-full h-full" do %>
-      <%= image_tag "title_logo.png", class: "object-contain object-left w-full h-full" %>
+<div class="navbar h-16 py-2 bg-base-300 rounded-box flex gap-2">
+  <div class="h-full">
+    <%= link_to root_path, class: "h-full" do %>
+      <%= image_tag "title_logo.png", class: "object-contain object-left h-full" %>
     <% end %>
   </div> 
-  <div class="px-2">
-    <div class="flex">
-      <%= link_to t('.login'), :login, class:"btn btn-primary btn-sm rounded-btn" %>
-    </div>
+  <div class="ml-auto">
+    <%= link_to t('.login'), :login, class:"btn btn-primary btn-sm rounded-btn" %>
   </div>
 </div>

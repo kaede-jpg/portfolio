@@ -1,6 +1,8 @@
-<h1><%= t('.title') %></h1>
-<%= render @user %>
-<div>
-  <%= link_to t('.edit_user'), edit_user_path, class: "btn" %>
-  <%= button_to t('helpers.submit.delete'), user_path, method: :delete, class: "btn" %>
+<div class="flex flex-col items-center pt-4 gap-3">
+  <h1 class="text-xl font-bold"><%= t('.title') %></h1>
+  <%= render @user %>
+  <div class="flex gap-2">
+    <%= link_to t('.edit_user'), edit_user_path, class: "btn btn-sm" %>
+    <%= button_to t('helpers.submit.delete'), user_path, data: { turbo_method: :delete, turbo_confirm: t('activerecord.models.user') + t('helpers.message.delete_confirm')}, class: "btn btn-sm" %>
+  </div>
 </div>

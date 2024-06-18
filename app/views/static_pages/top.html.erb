@@ -1,37 +1,36 @@
-<div class="p-2 w-full flex flex-col justify-center items-center gap-4">
+<div class="px-4 pt-4 pb-12 w-full flex flex-col justify-center items-center gap-4">
     <h1 class="text-xl font-bold">「ぷに活監視システム」は、家族・友人にダイエットを監視してもらうことができるサービスだよ！</h1>
-    <div class="w-full lg:px-60 mt-2">
-        <div class="chat chat-start">
-            <div class="chat-image avatar">
-                <div class="w-20 rounded-full">
-                    <%= image_tag "shinpai_man.png" %>
+    <div class="w-full lg:px-80 mt-2">
+        <div class="bg-neutral-500 rounded-full p-10">
+            <div class="chat chat-start p-0">
+                <div class="chat-image avatar">
+                    <div class="w-20 lg:w-32">
+                        <%= image_tag "shinpai_man.png" %>
+                    </div>
+                </div>
+                <div class="chat-bubble bg-red-100">
+                    <p>家族の健康が心配すぎる。</p>
+                    <p>いらんもの食べてないか見張りたい！</p>
                 </div>
             </div>
-            <div class="chat-bubble bg-red-100">
-                <p>家族の健康が心配すぎる。</p>
-                <p>いらんもの食べてないか見張りたい！</p>
-            </div>
-        </div>
-        <div class="chat chat-end">
-            <div class="chat-image avatar">
-                <div class="w-20 rounded-full">
-                    <%= image_tag "biyou_nijuuago.png" %>
+            <p class="text-xl text-center text-black">こう思ったことはありませんか？</p>
+            <div class="chat chat-end p-0">
+                <div class="chat-image avatar">
+                    <div class="w-20 lg:w-32">
+                        <%= image_tag "biyou_nijuuago.png" %>
+                    </div>
+                </div>
+                <div class="chat-bubble bg-orange-100">
+                    <p>ダイエットしたいけどつい食べちゃう…</p>
+                    <p>だれか私を監視してくれー！</p>
                 </div>
             </div>
-            <div class="chat-bubble bg-orange-100">
-                <p>ダイエットしたいけどつい食べちゃう…</p>
-                <p>だれか私を監視してくれー！</p>
-            </div>
         </div>
-    </div>
-    <div class="flex w-full justify-evenly">
-        <img class= "w-2/5" src="#" />
-        <img class= "w-2/5" src="#" />
     </div>
     <div class="w-full lg:px-60">
         <div class="chat chat-end">
             <div class="chat-image avatar">
-                <div class="w-20 rounded-full">
+                <div class="w-10 lg:w-20 rounded-full bg-white">
                     <%= image_tag "biyou_nijuuago.png" %>
                 </div>
             </div>
@@ -39,15 +38,29 @@
         </div>
         <div class="chat chat-start">
             <div class="chat-image avatar">
-                <div class="w-20 rounded-full">
+                <div class="w-10 lg:w-20 rounded-full bg-white">
                     <%= image_tag "shinpai_man.png" %>
                 </div>
             </div>
             <div class="chat-bubble bg-red-100">食事の記録を見て、スタンプで𠮟咤激励！</div>
         </div>
+        <div class="flex flex-col lg:flex-row">
+            <div class="mockup-phone">
+                <div class="camera"></div> 
+                <div class="display">
+                    <div class="artboard artboard-demo phone-1">Hi.</div>
+                </div>
+            </div>
+            <div class="mockup-phone">
+                <div class="camera"></div> 
+                <div class="display">
+                    <div class="artboard artboard-demo phone-1">Hi.</div>
+                </div>
+            </div>
+        </div>
         <div class="chat chat-end">
             <div class="chat-image avatar">
-                <div class="w-20 rounded-full">
+                <div class="w-10 lg:w-20 rounded-full bg-white">
                     <%= image_tag "biyou_nijuuago.png" %>
                 </div>
             </div>
@@ -57,17 +70,17 @@
         </div>
         <div class="chat chat-start">
             <div class="chat-image avatar">
-                <div class="w-20 rounded-full">
+                <div class="w-10 lg:w-20 rounded-full bg-white">
                     <%= image_tag "shinpai_man.png" %>
                 </div>
             </div>
             <div class="chat-bubble bg-red-100">
                 <p>記録の更新時や記録忘れはLINEで通知。</p>
-                <p>サボっていたら教えてあげよう。</p>
+                <p>サボっていたら声をかけてあげよう。</p>
             </div>
         </div>
     </div>
     <div>
-        <%= link_to "はじめる！", new_user_path, class: "btn btn-accent text-xl font-bold" %>
+        <%= link_to "はじめる！", new_user_path, class: "fixed bottom-0 inset-x-0 btn btn-accent text-xl font-bold" %>
     </div>
 </div>

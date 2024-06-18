@@ -64,3 +64,4 @@ Rails.application.configure do
 
   config.log_level = :debug
 end
+Rails.application.routes.default_url_options = { host: 'test.host' }
