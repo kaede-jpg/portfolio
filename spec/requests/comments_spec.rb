@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Comments', type: :request do
   let(:record) { create(:record) }
-  let(:user) { create(:user) }
+  let(:user) { record.user }
 
   let(:valid_attributes) do
     {

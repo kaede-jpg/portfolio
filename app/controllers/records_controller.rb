@@ -21,13 +21,9 @@ class RecordsController < ApplicationController
 
   def create
     @record = current_user.records.build(record_params)
-    if @record.save
-      LinebotJob.perform_later(@record)
-      redirect_to records_path, notice: t('activerecord.models.record') + t('notice.create')
-    else
-      flash.now[:alert] = t('activerecord.models.record') + t('alert.create_failed')
-      render :new, status: :unprocessable_entity
-    end
+    @record.save!
+    LinebotJob.perform_later(@record)
+    redirect_to records_path, notice: t('activerecord.models.record') + t('notice.create')
   end
 
   def destroy
