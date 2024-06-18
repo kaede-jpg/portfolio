@@ -16,7 +16,7 @@ RSpec.describe '/records', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Record. As you add validations to Record, be sure to
   # adjust the attributes here as well.
-  let(:user) { create(:user) }
+  let(:user) { create(:user, :monitored) }
 
   let(:valid_attributes) do
     {
@@ -37,15 +37,8 @@ RSpec.describe '/records', type: :request do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      create(:record)
+      create(:record, user_id: user.id)
       get records_path
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_record_path
       expect(response).to be_successful
     end
   end
@@ -58,7 +51,7 @@ RSpec.describe '/records', type: :request do
         end.to change(Record, :count).by(1)
       end
 
-      it 'redirects to the created record' do
+      it 'redirects to records' do
         post records_path, params: { record: valid_attributes }
         expect(response).to redirect_to(records_path)
       end

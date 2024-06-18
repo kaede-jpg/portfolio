@@ -1,17 +1,25 @@
-<div class="navbar bg-base-300 rounded-box">
-  <div class="flex-1 px-2 lg:flex-none">
-    <%= link_to t('helpers.title'), records_path, class:"btn btn-ghost text-xl" %>
+<div class="navbar h-16 py-2 bg-base-300 rounded-box flex gap-2">
+  <div class="h-full">
+    <%= link_to records_path, class: "h-full" do %>
+      <%= image_tag "title_logo.png", class: "object-contain object-left h-full" %>
+    <% end %>
   </div> 
-  <div class="flex justify-end flex-1 px-2">
-    <div class="flex items-stretch">
-      <%= link_to t('.logout'), :logout, data: { turbo_method: :delete }, class:"btn btn-ghost rounded-btn" %>
-      <div class="dropdown dropdown-end">
+  <div class="ml-auto">
+    <div class="flex w-full">
+      <div class="btn btn-primary btn-sm rounded-btn m-auto">
+        <%= link_to t('.logout'), :logout, data: { turbo_method: :delete } %>
+      </div>
+      <div class="dropdown dropdown-end mr-2">
         <div tabindex="0" role="button" class="btn btn-ghost rounded-btn"><i class="fa-solid fa-bars"></i></div>
-        <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-            <li><%= link_to t('users.edit.title'), edit_user_path(current_user.id) %></li>
-            <li><%= link_to t('relationships.menu.title'), relationships_menu_path %></li>
+        <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4 flex flex-col gap-2">
+            <li><%= link_to t('users.show.title'), user_path, class: "btn btn-ghost btn-sm" %></li>
+            <li><%= link_to t('relationships.menu.title'), relationships_menu_path, class: "btn btn-ghost btn-sm " %></li>
             <% unless current_user.linked_line? %>
-              <li><%= link_to t('.login_with_line'), auth_at_provider_path(provider: :line), class: "btn" %></li>
+              <li><%= link_to t('.login_with_line'), auth_at_provider_path(provider: :line), class: "btn btn-ghost btn-sm" %></li>
+              <li>
+                <div class="line-it-button" data-lang="ja" data-type="friend" data-env="REAL" data-lineId="@127susri" style="display: none;"></div>
+                <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+              </li>
             <% end %>
         </ul>
       </div>

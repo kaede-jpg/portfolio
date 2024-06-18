@@ -1,6 +1,5 @@
 <h1><%= t('.title') %></h1>
 <%= render 'form' %>
 <%= link_to t('.login_with_line'), auth_at_provider_path(provider: :line), class: "btn" %>
-<%= link_to t('.password_forget'), "#", class: "btn" %>
+<%= link_to t('.password_forget'), new_password_reset_path, class: "btn" %>
 <%= link_to t('.to_register_page'), new_user_path, class: "btn" %>
-<%= link_to 'To users', users_path, class: "btn" %>

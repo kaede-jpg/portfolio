@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :users
+  resource :user, only: %i[show new create edit update destroy]
+  resources :users, only: [] do
+    member do
+      get :activate
+    end
+  end
+  resources :password_resets, only: %i[new create edit update]
 
   get 'login' => 'user_sessions#new', as: :login
   post 'login' => 'user_sessions#create'
@@ -13,10 +19,12 @@ Rails.application.routes.draw do
   get 'relationships/menu'
   patch 'relationships/relationship_code'
 
-  resources :records, only: %i[index new create destroy] do
+  resources :records, only: %i[index create destroy] do
     resources :comments, only: %i[create destroy], shallow: true
     resources :stamped_records, only: %i[create], shallow: true
   end
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

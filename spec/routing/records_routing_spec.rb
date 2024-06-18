@@ -6,10 +6,6 @@ RSpec.describe RecordsController, type: :routing do
       expect(get: '/records').to route_to('records#index')
     end
 
-    it 'routes to #new' do
-      expect(get: '/records/new').to route_to('records#new')
-    end
-
     it 'routes to #create' do
       expect(post: '/records').to route_to('records#create')
     end

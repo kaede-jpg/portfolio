@@ -8,6 +8,7 @@ ja:
       update: 更新
       delete: 削除
       close: 閉じる
+      send: 送信
     label:
       email: メールアドレス
       password: パスワード
@@ -20,6 +21,7 @@ ja:
   shared:
     header:
       logout: ログアウト
+      login_with_line: LINEと連携
     before_login_header:
       login: ログイン
   users:
@@ -28,7 +30,7 @@ ja:
       show_user: 詳細
       to_register_page: 登録ページへ
     show:
-      title: ユーザー詳細
+      title: ユーザー情報
       edit_user: 編集
     new:
       title: ユーザー登録
@@ -37,6 +39,9 @@ ja:
     edit:
       title: ユーザー編集
       show_user: 詳細
+    send_activation:
+      title: メールアドレス確認用メールを送信しました
+      complete_process: メールに記載のリンクから操作を完了してください
   user_sessions:
     new:
       title: ログイン
@@ -45,6 +50,11 @@ ja:
       password_forget: パスワードをお忘れの方はこちら
     form:
       login: ログイン
+  password_resets:
+    new:
+      title: パスワードリセット申請
+    edit:
+      title: パスワード再設定
   relationships:
     menu:
       title: 連携の設定
@@ -60,12 +70,11 @@ ja:
       information_of_relationship: こちらをパートナーの連携コード入力欄に入力してください。
   records:
     index:
-      create_record: 記録する！
-    new:
-      title: 記録
-      back_to_records: 記録一覧へ戻る
+      create_record: 記録する
     record:
       hide_stamps: スタンプを非表示
+    new_modal:
+      create_record: 記録する
   comments:
     comment_modal:
       title: コメント一覧
