@@ -38,10 +38,11 @@ ja:
       to_login_page: ログインページへ
     edit:
       title: ユーザー編集
-      show_user: 詳細
+      return: 戻る
     send_activation:
       title: メールアドレス確認用メールを送信しました
       complete_process: メールに記載のリンクから操作を完了してください
+      return: 戻る
   user_sessions:
     new:
       title: ログイン
