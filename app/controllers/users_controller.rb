@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render :send_activation, status: :unprocessable_entity
+      render :send_activation, status: :see_other
     else
       flash.now[:alert] = t('activerecord.models.user') + t('alert.create_failed')
       render :new, status: :unprocessable_entity
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       if @user.previous_changes[:email]
-        render :send_activation, status: :unprocessable_entity
+        render :send_activation, status: :see_other
       else
         redirect_to(:user, notice: t('activerecord.models.user') + t('notice.update'))
       end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def activate
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
-      redirect_to(login_path, notice: t('notice.activation_success'))
+      redirect_to(login_path, notice: t('notice.activation_success'), status: :see_other)
     else
       not_authenticated
     end

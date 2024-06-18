@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resource :user do
+  resource :user, only: %i[show new create edit update destroy]
+  resources :users, only: [] do
     member do
       get :activate
     end

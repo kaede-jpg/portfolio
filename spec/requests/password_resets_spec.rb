@@ -1,24 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe 'PasswordResets', type: :request do
-  describe 'GET /create' do
-    it 'returns http success' do
-      get '/password_resets/create'
-      expect(response).to have_http_status(:success)
+  let(:user) { create(:user) }
+
+  let(:valid_attributes) do
+    {
+      email: user.email
+    }
+  end
+
+  before do
+    disable_csrf_protection
+    request_login_as(user)
+  end
+
+  describe 'GET /new' do
+    it 'renders a successful response' do
+      get new_password_reset_path
+      expect(response).to be_successful
     end
   end
 
-  describe 'GET /edit' do
-    it 'returns http success' do
-      get '/password_resets/edit'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /update' do
-    it 'returns http success' do
-      get '/password_resets/update'
-      expect(response).to have_http_status(:success)
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'redirects to records' do
+        post password_resets_path, params: { user: valid_attributes }
+        expect(response).to redirect_to(login_path)
+      end
     end
   end
 end

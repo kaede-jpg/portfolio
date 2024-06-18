@@ -40,19 +40,11 @@ RSpec.describe '/users', type: :request do
     disable_csrf_protection
   end
 
-  describe 'GET /index' do
-    it 'renders a successful response' do
-      create(:user)
-      get users_path
-      expect(response).to be_successful
-    end
-  end
-
   describe 'GET /show' do
     it 'renders a successful response' do
       user = create(:user)
       request_login_as(user)
-      get user_path(user)
+      get user_path
       expect(response).to be_successful
     end
   end
@@ -68,7 +60,7 @@ RSpec.describe '/users', type: :request do
     it 'renders a successful response' do
       user = create(:user)
       request_login_as(user)
-      get edit_user_path(user)
+      get edit_user_path
       expect(response).to be_successful
     end
   end
@@ -77,33 +69,33 @@ RSpec.describe '/users', type: :request do
     context 'with valid parameters' do
       it 'creates a new User' do
         expect do
-          post users_path, params: { user: valid_attributes }
+          post user_path, params: { user: valid_attributes }
         end.to change(User, :count).by(1)
       end
 
-      it 'redirects to users' do
-        post users_path, params: { user: valid_attributes }
-        expect(response).to redirect_to(users_path)
+      it 'renders a response with 200 status' do
+        post user_path, params: { user: valid_attributes }
+        expect(response).to have_http_status(:see_other)
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new User' do
         expect do
-          post users_path, params: { user: invalid_attributes }
+          post user_path, params: { user: invalid_attributes }
         end.to change(User, :count).by(0)
       end
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post users_path, params: { user: invalid_attributes }
+        post user_path, params: { user: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
 
   describe 'PATCH /update' do
-    context 'with valid parameters' do
-      let(:new_attributes) do
+    context 'with valid parameters with email' do
+      let(:new_attributes_with_email) do
         {
           user_id: 'user_id_2',
           name: 'name_2',
@@ -118,15 +110,43 @@ RSpec.describe '/users', type: :request do
       end
 
       it 'updates the requested user' do
-        patch user_path(user), params: { user: new_attributes }
+        patch user_path, params: { user: new_attributes_with_email }
         user.reload
         skip('Add assertions for updated state')
       end
 
-      it 'redirects to users' do
-        patch user_path(user), params: { user: new_attributes }
+      it 'redirects to user' do
+        patch user_path, params: { user: new_attributes_with_email }
         user.reload
-        expect(response).to redirect_to(users_path)
+        expect(response).to have_http_status(:see_other)
+      end
+    end
+
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        {
+          user_id: 'user_id_2',
+          name: 'name_2',
+          email: 'email@example.com',
+          password: 'password2',
+          password_confirmation: 'password2'
+        }
+      end
+      let(:user) { create(:user) }
+      before do
+        request_login_as(user)
+      end
+
+      it 'updates the requested user' do
+        patch user_path, params: { user: new_attributes }
+        user.reload
+        skip('Add assertions for updated state')
+      end
+
+      it 'redirects to user' do
+        patch user_path, params: { user: new_attributes }
+        user.reload
+        expect(response).to redirect_to(user_path)
       end
     end
 
@@ -134,7 +154,7 @@ RSpec.describe '/users', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         user = create(:user)
         request_login_as(user)
-        patch user_path(user), params: { user: invalid_attributes }
+        patch user_path, params: { user: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -147,13 +167,13 @@ RSpec.describe '/users', type: :request do
     end
     it 'destroys the requested user' do
       expect do
-        delete user_path(user)
+        delete user_path
       end.to change(User, :count).by(-1)
     end
 
-    it 'redirects to the users list' do
-      delete user_path(user)
-      expect(response).to redirect_to(users_path)
+    it 'redirects to root' do
+      delete user_path
+      expect(response).to redirect_to(root_path)
     end
   end
 end

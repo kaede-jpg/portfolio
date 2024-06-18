@@ -1,5 +1,6 @@
 module LoginMacros
   def feature_login_as(user)
+    user.activate!
     visit root_path
     click_link 'ログイン'
     fill_in 'User', with: user.user_id
@@ -8,6 +9,7 @@ module LoginMacros
   end
 
   def request_login_as(user)
+    user.activate!
     post '/login', params: { user_id: user.user_id, password: 'password' }
   end
 end
