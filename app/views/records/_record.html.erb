@@ -1,9 +1,12 @@
 <div class="card card-compact bg-base-200 shadow-xl mx-auto max-w-md">
-  <div class="card-body">
+  <div class="flex p-4">
     <h2 class="card-title">
       <%= l record.created_at, format: :time %>
     </h2>
-    <div class="btn"><%= t('.hide_stamps') %></div>
+    <% if current_user.monitored? %>
+      <%= link_to t('helpers.submit.delete'), record_path(record), data: { turbo_method: :delete, turbo_confirm: t('activerecord.models.record') + t('helpers.message.delete_confirm')}, class: "btn btn-sm ml-auto" %>
+    <% end %>
+<!--    <div class="btn btn-sm"><%= t('.hide_stamps') %></div> -->
   </div>
   <div id="<%= dom_id record %>" class="relative">
     <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
@@ -13,15 +16,13 @@
       <% end %>
     </div>
   </div>
-  <div class="card-body mt-2">
+  <div class="card-body">
     <div class="card-actions place-content-end">
       <%= render 'stamped_records/stamps_table', stamps: stamps, record: record %>
       <% if current_user.monitor? %>
         <%= render 'stamped_records/form', stamps: stamps, record: record %>
-      <% else %>
-        <%= link_to t('helpers.submit.delete'), record_path(record), data: { turbo_method: :delete, turbo_confirm: t('activerecord.models.record') + t('helpers.message.delete_confirm')}, class: "btn" %>
       <% end %>
-      <button class="btn" onclick="comment_modal_<%= dom_id record %>.showModal()"><%= t('activerecord.models.comment') %></button>
+      <button class="btn btn-sm btn-accent mr-auto" onclick="comment_modal_<%= dom_id record %>.showModal()"><%= t('activerecord.models.comment') %></button>
     </div>
   </div>
 </div>

@@ -1,3 +1,13 @@
-<div>ユーザーID：<%= current_user.user_id %></div>
-<div>連携コード：<%= @relationship_token %></div>
-<p><%= t('.information_of_relationship') %></p>
+<div class="flex flex-col items-center py-4 gap-2">
+    <h1 class="text-lg font-bold"><%= t('.information_of_relationship') %></h1>
+    <div class="flex flex-col items-start gap-2 bg-neutral-500 rounded-lg p-6">
+        <div>
+            <strong>ユーザーID：</strong>
+            <%= current_user.user_id %>
+        </div>
+        <div>
+            <strong>連携コード：</strong>
+            <%= @relationship_token %>
+        </div>
+    </div>
+</div>
