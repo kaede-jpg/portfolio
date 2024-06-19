@@ -22,9 +22,9 @@ class OauthsController < ApplicationController
 
   def link_line_account(provider)
     if add_provider_to_user(provider)
-      redirect_to root_path, notice: provider.titleize + t('notice.link_line_successful')
+      redirect_to records_path, notice: provider.titleize + t('notice.link_line_successful')
     else
-      redirect_to root_path, alert: provider.titleize + t('alert.link_line_failed')
+      redirect_to records_path, alert: provider.titleize + t('alert.link_line_failed')
     end
   end
 
