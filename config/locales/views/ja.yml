@@ -60,9 +60,9 @@ ja:
     menu:
       title: 連携の設定
       create_relationship: 連携する
-      with_code: 連携コードをお持ちですか？
+      with_code: 連携コードを持っている
       partner_userid: パートナーのユーザーID
-      without_code: 持っていないので、連携コードを発行する
+      without_code: 連携コードを持っていないので、発行する
       placeholder_userid: ユニークなIDを作成してください
       information_of_change_role: 役割の変更には連携の解除が必要です。
       delete_relationship: 連携を解除する
