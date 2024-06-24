@@ -7,6 +7,7 @@ ja:
       create: 発行
       update: 更新
       delete: 削除
+      release: 解除
       close: 閉じる
       send: 送信
     label:
@@ -59,14 +60,16 @@ ja:
   relationships:
     menu:
       title: 連携の設定
-      create_relationship: 連携する
-      with_code: 連携コードを持っている
-      partner_userid: パートナーのユーザーID
-      without_code: 連携コードを持っていないので、発行する
-      placeholder_userid: ユニークなIDを作成してください
-      information_of_change_role: 役割の変更には連携の解除が必要です。
-      delete_relationship: 連携を解除する
+      create_relationship: 新たに連携する
+      with_code: 連携コードあり
+      without_code: 連携コードがないので発行する
+      relate_user: 連携しているユーザー
       no_relationship: 連携されていません
+    with_code_modal:
+      partner_userid: パートナーのユーザーID
+    without_code_modal:
+      placeholder_userid: ユニークなIDを作成してください
+      information_of_change_role: 役割を変更するには現在の連携の解除が必要です
     relationship_code:
       information_of_relationship: こちらをパートナーの連携コード入力欄に入力してください。
   records:

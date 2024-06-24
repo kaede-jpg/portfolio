@@ -1,0 +1,34 @@
+<dialog id="without_code_modal" class="modal">
+    <div class="modal-box">
+        <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h2 class="text-lg font-bold">連携コードの発行</h2>
+        <div class="flex flex-col items-center">
+            <%= form_with model: current_user, url: relationships_relationship_code_path, data: { turbo: false } do |f| %>
+                <%= render 'shared/error_message' , object: f.object %>
+                <div class="flex flex-col items-center gap-4">
+                    <div>
+                        <%= f.label :user_id, style: "display: block" %>
+                        <div  class="tooltip tooltip-bottom" data-tip="ユーザーIDを設定・変更できます">
+                            <%= f.text_field :user_id, placeholder: t('.placeholder_userid'), class: "input input-bordered w-full max-w-xs" %>
+                        </div>
+                    </div>
+                    <% if current_user.related? %>
+                        <div class="join tooltip tooltip-bottom" data-tip=<%= t('.information_of_change_role') %>>
+                            <%= f.radio_button :role, :monitor, aria: { label: t('helpers.label.monitor') }, checked: true, class: "join-item btn", disabled: true %>
+                            <%= f.radio_button :role, :monitored, aria: { label: t('helpers.label.monitored') }, class: "join-item btn", disabled: true %>
+                        </div>
+                        <%= f.hidden_field :role, value: current_user.role %>
+                    <% else %>
+                        <div class="join">
+                            <%= f.radio_button :role, :monitor, aria: { label: t('helpers.label.monitor') }, checked: true, class: "join-item btn" %>
+                            <%= f.radio_button :role, :monitored, aria: { label: t('helpers.label.monitored') }, class: "join-item btn" %>
+                        </div>
+                    <% end %>
+                    <%= f.submit t('helpers.submit.create'), class: "btn btn-sm btn-accent" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</dialog>
