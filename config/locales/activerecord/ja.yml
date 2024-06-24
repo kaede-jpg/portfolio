@@ -16,7 +16,6 @@ ja:
         created_at: 作成日時
         relationship_code: 連携コード
         role: 役割
-        user_id: ユーザーID
   enums:
     user:
       role:

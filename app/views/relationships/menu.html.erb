@@ -4,21 +4,23 @@
         <div class="flex flex-col items-center pt-4 gap-3 w-full sm:w-1/2">
             <h2 class="text-lg"><%= t('.relate_user') %></h2>
             <table class="table bg-orange-100 text-black">
-                <tr>
-                    <% if current_user.related? %>
-                        <% if current_user.monitor? %>
+                <% if current_user.related? %>
+                    <% if current_user.monitor? %>
+                        <tr>
                             <td><%= @monitored_user.name %></td>
                             <td class="text-right"><%= link_to t('helpers.submit.release'), relationship_path(current_user.relationship), data: { turbo_method: :delete, turbo_confirm: @monitored_user.name + t('helpers.message.disengage_confirm')}, class: "btn btn-sm" %></td>
-                        <% else %>
-                            <% @monitor_users.each do |user| %>
+                        </tr>
+                    <% else %>
+                        <% @monitor_users.each do |user| %>
+                            <tr>
                                 <td><%= user.name %></td>
                                 <td class="text-right"><%= link_to t('helpers.submit.release'), relationship_path(user.relationship), data: { turbo_method: :delete, turbo_confirm: user.name + t('helpers.message.disengage_confirm')}, class: "btn btn-sm" %></td>
-                            <% end %>
+                            </tr>
                         <% end %>
-                    <% else %>
-                        <p class="text-center text-red-600"><%= t(".no_relationship") %></p>
                     <% end %>
-                </tr>
+                <% else %>
+                    <p class="text-center text-red-600"><%= t(".no_relationship") %></p>
+                <% end %>
             </table>
         </div>
         <div class="flex flex-col items-center pt-4 gap-3 w-full">

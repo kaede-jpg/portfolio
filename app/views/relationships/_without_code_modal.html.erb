@@ -4,29 +4,34 @@
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h2 class="text-lg font-bold">連携コードの発行</h2>
-        <div class="flex flex-col items-center">
+        <p class="mt-2">あなたの役割を選択して、「発行」を押してください。</p>
+        <div class="flex flex-col items-center mt-4 gap-2">
             <%= form_with model: current_user, url: relationships_relationship_code_path, data: { turbo: false } do |f| %>
                 <%= render 'shared/error_message' , object: f.object %>
-                <div class="flex flex-col items-center gap-4">
-                    <div>
-                        <%= f.label :user_id, style: "display: block" %>
-                        <div  class="tooltip tooltip-bottom" data-tip="ユーザーIDを設定・変更できます">
-                            <%= f.text_field :user_id, placeholder: t('.placeholder_userid'), class: "input input-bordered w-full max-w-xs" %>
-                        </div>
-                    </div>
+                <div class="flex flex-col items-center">
                     <% if current_user.related? %>
-                        <div class="join tooltip tooltip-bottom" data-tip=<%= t('.information_of_change_role') %>>
-                            <%= f.radio_button :role, :monitor, aria: { label: t('helpers.label.monitor') }, checked: true, class: "join-item btn", disabled: true %>
-                            <%= f.radio_button :role, :monitored, aria: { label: t('helpers.label.monitored') }, class: "join-item btn", disabled: true %>
+                        <div class="flex flex-col gap-2 tooltip tooltip-bottom" data-tip=<%= t('.information_of_change_role') %>>
+                            <div class="flex items-center gap-2">
+                                <%= f.radio_button :role, :monitor, checked: true, class: "radio radio-accent", disabled: true %>
+                                <%= f.label :role, t('helpers.label.monitor') %>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <%= f.radio_button :role, :monitored, class: "radio radio-accent", disabled: true %>
+                                <%= f.label :role, t('helpers.label.monitored') %>
+                            </div>
                         </div>
                         <%= f.hidden_field :role, value: current_user.role %>
                     <% else %>
-                        <div class="join">
-                            <%= f.radio_button :role, :monitor, aria: { label: t('helpers.label.monitor') }, checked: true, class: "join-item btn" %>
-                            <%= f.radio_button :role, :monitored, aria: { label: t('helpers.label.monitored') }, class: "join-item btn" %>
+                        <div>
+                            <%= f.radio_button :role, :monitor, checked: true, class: "radio radio-accent" %>
+                            <%= f.label :role, t('helpers.label.monitor') %>
+                            <%= f.radio_button :role, :monitored, class: "radio radio-accent" %>
+                            <%= f.label :role, t('helpers.label.monitored') %>
                         </div>
                     <% end %>
-                    <%= f.submit t('helpers.submit.create'), class: "btn btn-sm btn-accent" %>
+                    <div class="modal-action">
+                        <%= f.submit t('helpers.submit.create'), class: "btn btn-sm btn-accent" %>
+                    </div>
                 </div>
             <% end %>
         </div>

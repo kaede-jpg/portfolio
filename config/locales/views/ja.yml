@@ -13,7 +13,6 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
-      user_id: ユーザーID
       monitor: 監視する
       monitored: 監視される
     message:
@@ -65,10 +64,7 @@ ja:
       without_code: 連携コードがないので発行する
       relate_user: 連携しているユーザー
       no_relationship: 連携されていません
-    with_code_modal:
-      partner_userid: パートナーのユーザーID
     without_code_modal:
-      placeholder_userid: ユニークなIDを作成してください
       information_of_change_role: 役割を変更するには現在の連携の解除が必要です
     relationship_code:
       information_of_relationship: こちらをパートナーの連携コード入力欄に入力してください。

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_16_140102) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_24_165250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,10 +99,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_140102) do
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "relationship_digest"
+    t.string "relationship_code"
     t.datetime "relationship_code_made_at"
     t.integer "role"
-    t.string "user_id"
     t.string "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
@@ -112,9 +111,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_140102) do
     t.datetime "activation_token_expires_at"
     t.index ["activation_token"], name: "index_users_on_activation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["relationship_digest"], name: "index_users_on_relationship_digest", unique: true
+    t.index ["relationship_code"], name: "index_users_on_relationship_code", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
