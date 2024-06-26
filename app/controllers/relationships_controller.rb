@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
   def menu; end
 
   def create
-    partner = User.find_by(user_id: relationship_params[:user_id])
+    partner = User.find_by(relationship_code: relationship_params[:relationship_code])
     if valid_partner?(partner, relationship_params[:relationship_code])
       create_relationship(partner)
       if @relationship.save
@@ -21,7 +21,7 @@ class RelationshipsController < ApplicationController
 
   def relationship_code
     if relationship_code_params[:role].present?
-      create_relationship_attributes(relationship_code_params[:user_id], relationship_code_params[:role])
+      create_relationship_attributes(relationship_code_params[:role])
       if current_user.save
         render :relationship_code
       else
@@ -43,11 +43,11 @@ class RelationshipsController < ApplicationController
   private
 
   def relationship_code_params
-    params.require(:user).permit(:user_id, :role)
+    params.require(:user).permit(:role)
   end
 
   def relationship_params
-    params.require(:relationship).permit(:user_id, :relationship_code)
+    params.require(:relationship).permit(:relationship_code)
   end
 
   def initialize_relationship
@@ -62,14 +62,13 @@ class RelationshipsController < ApplicationController
   end
 
   def valid_partner?(partner, relationship_code)
-    partner&.relationship_digest && BCrypt::Password.new(partner.relationship_digest).is_password?(relationship_code)
+    partner&.relationship_code == relationship_code
   end
 
-  def create_relationship_attributes(user_id, role)
+  def create_relationship_attributes(role)
     @relationship_token = User.new_token
     current_user.attributes = {
-      user_id:,
-      relationship_digest: User.digest(@relationship_token),
+      relationship_code: @relationship_token,
       relationship_code_made_at: Time.zone.now,
       role:
     }

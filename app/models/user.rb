@@ -21,25 +21,14 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
-  validates :user_id, uniqueness: true, presence: true
 
-  validates :relationship_digest, uniqueness: true, allow_nil: true
+  validates :relationship_code, uniqueness: true, allow_nil: true
 
   enum role: { monitor: 0, monitored: 1 }
   validate :role_change_restriction
 
   scope :monitored_by, ->(user) { find(user.relationship.monitored_id) }
   scope :monitors_of, ->(user) { where(id: user.relationships.pluck(:monitor_id)) }
-
-  # 渡された文字列のハッシュ値を返す
-  def self.digest(string)
-    cost = if ActiveModel::SecurePassword.min_cost
-             BCrypt::Engine::MIN_COST
-           else
-             BCrypt::Engine.cost
-           end
-    BCrypt::Password.create(string, cost:)
-  end
 
   # ランダムなトークンを返す
   def self.new_token
