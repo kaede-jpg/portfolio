@@ -5,7 +5,7 @@ module LoginMacros
     click_link 'ログイン'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'password'
-    click_button 'ログイン'
+    click_button 'Login'
   end
 
   def request_login_as(user)
