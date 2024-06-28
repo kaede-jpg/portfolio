@@ -18,7 +18,6 @@ RSpec.describe '/users', type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) do
     {
-      user_id: 'user_id',
       name: 'name',
       email: 'email@example.com',
       password: 'password',
@@ -28,7 +27,6 @@ RSpec.describe '/users', type: :request do
 
   let(:invalid_attributes) do
     {
-      user_id: 'user_id',
       name: '',
       email: '',
       password: 'p',
@@ -97,7 +95,6 @@ RSpec.describe '/users', type: :request do
     context 'with valid parameters with email' do
       let(:new_attributes_with_email) do
         {
-          user_id: 'user_id_2',
           name: 'name_2',
           email: 'email2@example.com',
           password: 'password2',
@@ -125,7 +122,6 @@ RSpec.describe '/users', type: :request do
     context 'with valid parameters' do
       let(:new_attributes) do
         {
-          user_id: 'user_id_2',
           name: 'name_2',
           email: 'email@example.com',
           password: 'password2',

@@ -3,7 +3,7 @@ class UserSessionsController < ApplicationController
   def new; end
 
   def create
-    @user = login(params[:user_id], params[:password])
+    @user = login(params[:email], params[:password])
 
     if @user
       redirect_back_or_to records_path, notice: t('notice.login_successful')

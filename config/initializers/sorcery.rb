@@ -226,7 +226,6 @@ Rails.application.config.sorcery.configure do |config|
   config.line.bot_prompt = 'aggressive'
   config.line.user_info_mapping = {
     name: 'displayName',
-    user_id: 'userId',
     email: 'userId'
   }
 
@@ -250,7 +249,7 @@ Rails.application.config.sorcery.configure do |config|
     # Specify username attributes, for example: [:username, :email].
     # Default: `[:email]`
     #
-    user.username_attribute_names = [:user_id]
+    # user.username_attribute_names = [:email]
 
     # Change *virtual* password attribute, the one which is used until an encrypted one is generated.
     # Default: `:password`
