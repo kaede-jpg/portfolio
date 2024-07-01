@@ -1,10 +1,10 @@
-<div class="px-4 pt-4 pb-12 w-full flex flex-col justify-center items-center gap-4">
-    <h1 class="text-xl font-bold">「ぷに活監視システム」は、家族・友人にダイエットを監視してもらうことができるサービスだよ！</h1>
-    <div class="w-full lg:px-80 mt-2">
-        <div class="bg-neutral-500 rounded-full p-10">
-            <div class="chat chat-start p-0">
+<div class="px-4 pt-4 pb-12 w-full flex flex-col justify-center items-center gap-6">
+    <div class="bg-base-200 rounded-lg mt-2 py-4">
+        <p class="text-xl font-bold text-center pb-4">こう思ったことはありませんか？</p>
+        <div class="lg:flex">
+            <div class="chat chat-start">
                 <div class="chat-image avatar">
-                    <div class="w-20 lg:w-32">
+                    <div class="w-20">
                         <%= image_tag "top/shinpai_man.png" %>
                     </div>
                 </div>
@@ -13,10 +13,9 @@
                     <p>いらんもの食べてないか見張りたい！</p>
                 </div>
             </div>
-            <p class="text-xl text-center text-black">こう思ったことはありませんか？</p>
-            <div class="chat chat-end p-0">
+            <div class="chat chat-end">
                 <div class="chat-image avatar">
-                    <div class="w-20 lg:w-32">
+                    <div class="w-20">
                         <%= image_tag "top/biyou_nijuuago.png" %>
                     </div>
                 </div>
@@ -27,72 +26,60 @@
             </div>
         </div>
     </div>
-    <div class="mockup-phone">
-        <div class="camera"></div> 
-        <div class="display">
-            <div class="artboard artboard-demo phone-1">
-                <div class="carousel w-full h-full">
-                    <div id="slide1" class="carousel-item relative w-full">
-                        <img src=# class="w-full" />
-                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide4" class="btn btn-circle">❮</a> 
-                        <a href="#slide2" class="btn btn-circle">❯</a>
+    <h1 class="text-2xl font-bold text-accent">「ぷに活監視システム」で、家族・友人にダイエットを監視してもらおう！</h1>
+    <div class="flex flex-col lg:flex-row gap-4">
+        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-xl">
+            <div class="flex gap-2 p-4 font-bold">
+                <h2 class="text-2xl">①</h2>
+                <h2>１対１～３人で連携し、ダイエットしたい人を見張ることができます。</h2>
+            </div>
+            <figure class="bg-white">
+                <%= image_tag "top/説明1.png" %>
+            </figure>
+            <div class="p-4"></div>
+        </div>
+        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-xl">
+            <div class="flex gap-2 p-4 font-bold">
+                <h2 class="text-2xl">②</h2>
+                <h2>
+                    <p>監視される側は、食事を写真で記録します。</p>
+                    <p>監視する側は、スタンプ・コメントでリアクションしましょう！</P>
+                </h2>
+            </div>
+            <figure class="bg-white">
+                <%= image_tag "top/説明2.png" %>
+            </figure>
+            <div class="p-4">
+                <div class="chat chat-end">
+                    <div class="chat-image avatar">
+                        <div class="w-10 rounded-full bg-white">
+                            <%= image_tag "top/biyou_nijuuago.png" %>
                         </div>
-                    </div> 
-                    <div id="slide2" class="carousel-item relative w-full">
-                        <img src=# class="w-full" />
-                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" class="btn btn-circle">❮</a> 
-                        <a href="#slide3" class="btn btn-circle">❯</a>
+                    </div>
+                    <div class="chat-bubble bg-orange-100">スタンプで怒られると、画面が埋まって無言の圧を感じる…</div>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-xl">
+            <div class="flex gap-2 p-4 font-bold">
+                <h2 class="text-2xl">③</h2>
+                <h2>監視する側へ、投稿忘れのリマインド・投稿通知をLINEで送信します。</h2>
+            </div>
+            <figure class="bg-white">
+                <%= image_tag "top/説明3.png", class:"w-1/2" %>
+            </figure>
+            <div class="p-4">
+                <div class="chat chat-start">
+                    <div class="chat-image avatar">
+                        <div class="w-10 rounded-full bg-white">
+                            <%= image_tag "top/shinpai_man.png" %>
                         </div>
-                    </div> 
-                    <div id="slide3" class="carousel-item relative w-full">
-                        <img src=# class="w-full" />
-                        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" class="btn btn-circle">❮</a> 
-                        <a href="#slide1" class="btn btn-circle">❯</a>
-                        </div>
-                    </div> 
+                    </div>
+                    <div class="chat-bubble bg-red-100">
+                        <p>更新があったらリアクションしに行こう。</p>
+                        <p>記録をサボっていたら声をかけてあげよう。</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="w-full lg:px-60">
-        <div class="chat chat-end">
-            <div class="chat-image avatar">
-                <div class="w-10 lg:w-20 rounded-full bg-white">
-                    <%= image_tag "top/biyou_nijuuago.png" %>
-                </div>
-            </div>
-            <div class="chat-bubble bg-orange-100">食事を画像で記録!</div>
-        </div>
-        <div class="chat chat-start">
-            <div class="chat-image avatar">
-                <div class="w-10 lg:w-20 rounded-full bg-white">
-                    <%= image_tag "top/shinpai_man.png" %>
-                </div>
-            </div>
-            <div class="chat-bubble bg-red-100">食事の記録を見て、スタンプで𠮟咤激励！</div>
-        </div>
-        <div class="chat chat-end">
-            <div class="chat-image avatar">
-                <div class="w-10 lg:w-20 rounded-full bg-white">
-                    <%= image_tag "top/biyou_nijuuago.png" %>
-                </div>
-            </div>
-            <div class="chat-bubble bg-orange-100">
-                <p>今日の食事は何点だろう？</p><p>スタンプで怒られると、画面が埋まって無言の圧を感じる…</p>
-            </div>
-        </div>
-        <div class="chat chat-start">
-            <div class="chat-image avatar">
-                <div class="w-10 lg:w-20 rounded-full bg-white">
-                    <%= image_tag "top/shinpai_man.png" %>
-                </div>
-            </div>
-            <div class="chat-bubble bg-red-100">
-                <p>記録の更新時や記録忘れはLINEで通知。</p>
-                <p>サボっていたら声をかけてあげよう。</p>
             </div>
         </div>
     </div>
