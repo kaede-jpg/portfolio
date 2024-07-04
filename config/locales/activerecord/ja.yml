@@ -16,6 +16,9 @@ ja:
         created_at: 作成日時
         relationship_code: 連携コード
         role: 役割
+      record:
+        meal_image: 食事の画像
+        meal_name: 食事名
   enums:
     user:
       role:

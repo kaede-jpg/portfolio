@@ -8,6 +8,7 @@
     <% end %>
 <!--    <div class="btn btn-sm"><%= t('.hide_stamps') %></div> -->
   </div>
+  <%= record.meal_advise %>
   <div id="<%= dom_id record %>" class="relative">
     <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
     <div id="stamps-<%= dom_id record %>" class="absolute inset-0 grid grid-cols-8 grid-rows-8">
