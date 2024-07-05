@@ -22,7 +22,7 @@ class RecordsController < ApplicationController
   def create
     @record = current_user.records.build(record_params)
     @record.save!
-    @record.update(meal_advise: @record.recognition_name_and_calorie)
+    MealAdviseJob.perform_later(@record)
     LinebotJob.perform_later(@record)
     redirect_to records_path, notice: t('activerecord.models.record') + t('notice.create')
   end

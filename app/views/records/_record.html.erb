@@ -1,15 +1,26 @@
 <div class="card card-compact bg-base-200 shadow-xl mx-auto max-w-md">
-  <div class="flex p-4">
+  <div class="flex pt-4 px-4">
     <h2 class="card-title">
       <%= l record.created_at, format: :time %>
     </h2>
     <% if current_user.monitored? %>
       <%= link_to t('helpers.submit.delete'), record_path(record), data: { turbo_method: :delete, turbo_confirm: t('activerecord.models.record') + t('helpers.message.delete_confirm')}, class: "btn btn-sm ml-auto" %>
     <% end %>
+    <% if current_user.monitor? %>
+    <div class="chat chat-start ml-4 w-full">
+      <div class="chat-image avatar">
+        <div class="w-10">
+            <%= image_tag "logo.png" %>
+        </div>
+      </div>
+      <div class="chat-bubble bg-red-100">
+        <%= record.meal_advise %>
+      </div>
+    </div>
+  <% end %>
 <!--    <div class="btn btn-sm"><%= t('.hide_stamps') %></div> -->
   </div>
-  <%= record.meal_advise %>
-  <div id="<%= dom_id record %>" class="relative">
+  <div id="<%= dom_id record %>" class="relative my-auto">
     <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
     <div id="stamps-<%= dom_id record %>" class="absolute inset-0 grid grid-cols-8 grid-rows-8">
       <% record.stamped_records.order(:created_at).limit(64).each do |stamped_record| %>
@@ -18,7 +29,7 @@
     </div>
   </div>
   <div class="card-body">
-    <div class="card-actions place-content-end">
+    <div class="card-actions place-content-end mt-auto">
       <%= render 'stamped_records/stamps_table', stamps: stamps, record: record %>
       <% if current_user.monitor? %>
         <%= render 'stamped_records/form', stamps: stamps, record: record %>
