@@ -70,11 +70,11 @@ ja:
       information_of_relationship: こちらをパートナーの連携コード入力欄に入力してください。
   records:
     index:
-      create_record: 記録する
+      create_record: 食事を記録する！
     record:
       hide_stamps: スタンプを非表示
     new_modal:
-      create_record: 記録する
+      create_record: 食事を記録する
   comments:
     comment_modal:
       title: コメント一覧

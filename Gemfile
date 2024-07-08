@@ -50,6 +50,7 @@ gem 'aws-sdk-s3'
 
 gem 'line-bot-api'
 gem 'rails-i18n'
+gem 'ruby-openai'
 gem 'simple_calendar'
 gem 'sorcery', '~> 0.17.0'
 
