@@ -9,7 +9,7 @@ class MealAdviseJob < ApplicationJob
   def perform(record)
     # 画像をBase64エンコード
     image_url = rails_blob_url(record.meal_image)
-    image_data = URI.open(image_url, &:read)
+    image_data = URI.parse(image_url).read
     base64_image = Base64.encode64(image_data)
     # Data URIを作成
     data_uri = "data:image/png;base64,#{base64_image}"
