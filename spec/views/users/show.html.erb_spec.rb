@@ -6,7 +6,8 @@ RSpec.describe 'users/show', type: :view do
                     name: 'MyString',
                     email: 'Email',
                     password: 'MyString',
-                    password_confirmation: 'MyString'
+                    password_confirmation: 'MyString',
+                    agreement: true
                   ))
   end
 

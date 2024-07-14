@@ -21,7 +21,8 @@ RSpec.describe '/users', type: :request do
       name: 'name',
       email: 'email@example.com',
       password: 'password',
-      password_confirmation: 'password'
+      password_confirmation: 'password',
+      agreement: '1'
     }
   end
 
@@ -30,7 +31,8 @@ RSpec.describe '/users', type: :request do
       name: '',
       email: '',
       password: 'p',
-      password_confirmation: 'mismatch'
+      password_confirmation: 'mismatch',
+      agreement: ''
     }
   end
 
