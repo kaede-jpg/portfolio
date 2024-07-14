@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   def index
     @record = current_user.records.build
     @comment = current_user.comments.build
-    @stamps = Stamp.all
+    @stamps = Stamp.order(:id)
     if current_user.related?
       if current_user.monitor?
         monitored = User.monitored_by(current_user)

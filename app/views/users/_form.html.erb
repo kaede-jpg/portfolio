@@ -17,6 +17,23 @@
       <%= f.label :password_confirmation, style: "display: block" %>
       <%= f.password_field :password_confirmation, class:"input input-bordered" %>
     </div>
+    <% unless logged_in?%>
+      <div class="label cursor-pointer">
+        <%= f.check_box :agreement, as: :boolean, checked:false, class: "checkbox" %>
+        <div class="flex label-text">
+            <div>
+                <button type="button" class="link" onclick="modal_terms_of_use.showModal()">利用規約</button>
+                <%= render "shared/terms_of_use" %>
+            </div>
+            <div>・</div>
+            <div>
+                <button type="button" class="link" onclick="modal_privacy_policy.showModal()">プライバシーポリシー</button>
+                <%= render "shared/privacy_policy" %>
+            </div>
+            <div>に同意する</div>
+        </div>
+      </div>
+    <% end %>
     <div>
       <%= f.submit t('helpers.submit.register'), class: "btn btn-accent" %>
     </div>
