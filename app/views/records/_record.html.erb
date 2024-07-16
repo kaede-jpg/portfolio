@@ -1,5 +1,5 @@
 <div class="card card-compact bg-base-200 shadow-xl mx-auto max-w-md">
-  <div class="flex p-4">
+  <div class="flex p-4 items-start">
     <h2 class="card-title">
       <%= l record.created_at, format: :time %>
     </h2>
@@ -34,7 +34,7 @@
       <% if current_user.monitor? %>
         <%= render 'stamped_records/form', stamps: stamps, record: record %>
       <% end %>
-      <button class="btn btn-sm btn-accent mr-auto" onclick="comment_modal_<%= dom_id record %>.showModal()"><%= t('activerecord.models.comment') %></button>
+      <button class="btn btn-sm btn-secondary mr-auto" onclick="comment_modal_<%= dom_id record %>.showModal()"><%= t('activerecord.models.comment') %></button>
     </div>
   </div>
 </div>

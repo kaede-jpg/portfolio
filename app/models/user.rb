@@ -31,11 +31,6 @@ class User < ApplicationRecord
   scope :monitored_by, ->(user) { find(user.relationship.monitored_id) }
   scope :monitors_of, ->(user) { where(id: user.relationships.pluck(:monitor_id)) }
 
-  # ランダムなトークンを返す
-  def self.new_token
-    SecureRandom.urlsafe_base64
-  end
-
   # 連携済か判定する
   def related?
     relationship || relationships.exists?

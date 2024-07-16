@@ -16,10 +16,6 @@
           <li><%= link_to t('relationships.menu.title'), relationships_menu_path, class: "btn btn-ghost btn-sm " %></li>
           <% unless current_user.linked_line? %>
             <li><%= link_to t('.login_with_line'), auth_at_provider_path(provider: :line), class: "btn btn-ghost btn-sm" %></li>
-            <li>
-              <div class="line-it-button" data-lang="ja" data-type="friend" data-env="REAL" data-lineId="@127susri" style="display: none;"></div>
-              <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-            </li>
           <% end %>
           <div class="flex m-3">
             <div>

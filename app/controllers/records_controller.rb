@@ -15,7 +15,15 @@ class RecordsController < ApplicationController
       end
     else
       @records = current_user.records.preload(comments: :user, stamped_records: :stamp)
-      @message = t('message.not_related')
+      @message = if current_user.guest
+                   if current_user.monitor?
+                     current_user.name + t('message.monitor')
+                   else
+                     current_user.name + t('message.monitored_from')
+                   end
+                 else
+                   t('message.not_related')
+                 end
     end
   end
 
