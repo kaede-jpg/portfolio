@@ -12,25 +12,25 @@
                     <% if current_user.related? %>
                         <div class="flex flex-col gap-2 tooltip tooltip-bottom" data-tip=<%= t('.information_of_change_role') %>>
                             <div class="flex items-center gap-2">
-                                <%= f.radio_button :role, :monitor, checked: true, class: "radio radio-accent", disabled: true %>
+                                <%= f.radio_button :role, :monitor, checked: true, class: "radio radio-secondary", disabled: true %>
                                 <%= f.label :role, t('helpers.label.monitor') %>
                             </div>
                             <div class="flex items-center gap-2">
-                                <%= f.radio_button :role, :monitored, class: "radio radio-accent", disabled: true %>
+                                <%= f.radio_button :role, :monitored, class: "radio radio-secondary", disabled: true %>
                                 <%= f.label :role, t('helpers.label.monitored') %>
                             </div>
                         </div>
                         <%= f.hidden_field :role, value: current_user.role %>
                     <% else %>
                         <div>
-                            <%= f.radio_button :role, :monitor, checked: true, class: "radio radio-accent" %>
+                            <%= f.radio_button :role, :monitor, checked: true, class: "radio radio-secondary" %>
                             <%= f.label :role, t('helpers.label.monitor') %>
-                            <%= f.radio_button :role, :monitored, class: "radio radio-accent" %>
+                            <%= f.radio_button :role, :monitored, class: "radio radio-secondary" %>
                             <%= f.label :role, t('helpers.label.monitored') %>
                         </div>
                     <% end %>
                     <div class="modal-action">
-                        <%= f.submit t('helpers.submit.create'), class: "btn btn-sm btn-accent" %>
+                        <%= f.submit t('helpers.submit.create'), class: "btn btn-sm btn-secondary" %>
                     </div>
                 </div>
             <% end %>

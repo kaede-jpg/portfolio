@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', as: :login
   post 'login' => 'user_sessions#create'
   delete 'logout' => 'user_sessions#destroy', as: :logout
+  get 'guest_login' => 'guest_logins#create'
+  get 'guest/change_role' => 'guest_logins#change_role'
 
   post 'oauth/callback' => 'oauths#callback'
   get 'oauth/callback' => 'oauths#callback'

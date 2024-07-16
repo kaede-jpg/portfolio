@@ -66,7 +66,7 @@ class RelationshipsController < ApplicationController
   end
 
   def create_relationship_attributes(role)
-    @relationship_token = User.new_token
+    @relationship_token = SecureRandom.urlsafe_base64
     current_user.attributes = {
       relationship_code: @relationship_token,
       relationship_code_made_at: Time.zone.now,

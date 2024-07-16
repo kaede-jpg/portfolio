@@ -20,7 +20,7 @@
     <% unless logged_in?%>
       <div class="label cursor-pointer">
         <%= f.check_box :agreement, as: :boolean, checked:false, class: "checkbox" %>
-        <div class="flex label-text">
+        <div class="flex label-text pl-1">
             <div>
                 <button type="button" class="link" onclick="modal_terms_of_use.showModal()">利用規約</button>
                 <%= render "shared/terms_of_use" %>
@@ -35,7 +35,7 @@
       </div>
     <% end %>
     <div>
-      <%= f.submit t('helpers.submit.register'), class: "btn btn-accent" %>
+      <%= f.submit t('helpers.submit.register'), class: "btn btn-secondary" %>
     </div>
   </div>
 <% end %>
