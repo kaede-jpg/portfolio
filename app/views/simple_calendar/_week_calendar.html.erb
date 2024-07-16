@@ -22,7 +22,7 @@
             <% if current_user.monitored? && calendar.sorted_events_for(day).present? %>
               <% score = score(calendar.sorted_events_for(day))%>
               <div class="flex flex-col p-2 mb-2 mx-auto lg:w-1/2 text-center bg-red-100 rounded-full text-black">
-                <div>みんなの評価は<span class="text-2xl font-bold text-accent"><%= "#{score}点" %></span>です！</div>
+                <div>みんなの評価は<span class="text-2xl font-bold text-red-600"><%= "#{score}点" %></span>です！</div>
                 <div><%= score_comment(score) %></div>
               </div>
             <% elsif current_user.monitored? %>
