@@ -6,13 +6,13 @@ class GuestLoginsController < ApplicationController
       email: "#{SecureRandom.alphanumeric(10)}@email.com",
       password: 'password',
       password_confirmation: 'password',
-      role: 'monitor',
+      role: 'monitored',
       guest: true,
       agreement: true
     )
     guest_user.activate!
     auto_login(guest_user)
-    record = current_user.records.build
+    record = guest_user.records.build
     record.meal_image.attach(
       io: Rails.root.join('app/assets/images/sample_meal.jpg').open,
       filename: 'sample_meal.jpg',
@@ -20,7 +20,7 @@ class GuestLoginsController < ApplicationController
     )
     record.save!
     MealAdviseJob.perform_later(record)
-    redirect_to records_path, success: 'ゲストとしてログインしました'
+    redirect_to records_path, notice: 'ゲストとしてログインしました'
   end
 
   def change_role
@@ -29,6 +29,6 @@ class GuestLoginsController < ApplicationController
     else
       current_user.monitor!
     end
-    redirect_to records_path, success: '役割を変更しました'
+    redirect_to records_path
   end
 end

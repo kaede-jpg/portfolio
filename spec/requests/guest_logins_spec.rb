@@ -1,21 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe 'GuestLogins', type: :request do
-  describe 'GET /create' do
+  before do
+    disable_csrf_protection
+  end
+  describe 'POST /create' do
     it 'creates a new User' do
       expect do
-        get '/guest_login'
+        post guest_login_path
       end.to change(User, :count).by(1)
     end
     it 'returns http success' do
-      get '/guest_login'
+      post guest_login_path
       expect(response).to have_http_status(:found)
     end
   end
 
-  describe 'GET /change_role' do
+  describe 'POST /guest/change_role' do
     it 'returns http success' do
-      get '/guest/change_role'
+      post guest_change_role_path
       expect(response).to have_http_status(:found)
     end
   end
