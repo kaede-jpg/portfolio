@@ -72,7 +72,7 @@ ja:
     index:
       create_record: 食事を記録する！
     record:
-      hide_stamps: スタンプを非表示
+      hide_stamps: スタンプを隠す
     new_modal:
       create_record: 食事を記録する
   comments:
