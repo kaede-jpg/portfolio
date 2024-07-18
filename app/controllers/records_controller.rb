@@ -3,28 +3,9 @@ class RecordsController < ApplicationController
     @record = current_user.records.build
     @comment = current_user.comments.build
     @stamps = Stamp.order(:id)
-    if current_user.related?
-      if current_user.monitor?
-        monitored = User.monitored_by(current_user)
-        @records = Record.where(user_id: monitored.id).preload(comments: :user, stamped_records: :stamp)
-        @message = monitored.name + t('message.monitor')
-      else
-        monitors = User.monitors_of(current_user)
-        @records = current_user.records.preload(comments: :user, stamped_records: :stamp)
-        @message = monitors.map(&:name).join(t('message.and')) + t('message.monitored_from')
-      end
-    else
-      @records = current_user.records.preload(comments: :user, stamped_records: :stamp)
-      @message = if current_user.guest
-                   if current_user.monitor?
-                     current_user.name + t('message.monitor')
-                   else
-                     current_user.name + t('message.monitored_from')
-                   end
-                 else
-                   t('message.not_related')
-                 end
-    end
+    partner = set_partner
+    @records = set_records(partner)
+    @message = set_message(partner)
   end
 
   def create
@@ -46,4 +27,24 @@ class RecordsController < ApplicationController
   def record_params
     params.require(:record).permit(:meal_image)
   end
+
+  def set_partner
+    return current_user unless current_user.related?
+    return User.monitored_by(current_user) if current_user.monitor?
+    User.monitors_of(current_user)
+  end
+
+  def set_records(partner)
+    return Record.where(user_id: partner.id).preload(comments: :user, stamped_records: :stamp) if current_user.related? && current_user.monitor?
+    current_user.records.preload(comments: :user, stamped_records: :stamp)
+  end
+
+  def set_message(partner)
+    return partner.name + t('message.monitor') if current_user.related? && current_user.monitor?
+    return partner.map(&:name).join(t('message.and')) + t('message.monitored_from') if current_user.related?
+    return t('message.not_related') unless current_user.guest
+    return current_user.name + t('message.monitor') if current_user.monitor?
+    current_user.name + t('message.monitored_from')
+  end
+
 end
