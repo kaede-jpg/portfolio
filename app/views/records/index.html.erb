@@ -4,7 +4,7 @@
       <div role="tablist" class="tabs tabs-lifted tabs-lg">
         <% if current_user.monitor? %>
           <%= link_to "監視される側", '/guest/change_role', data: { turbo_method: :post }, role:"tab", class: "tab bg-base-100" %>
-          <div role="tab", class="tab tab-active text-black [--tab-bg:orange]">監視側</div>
+          <div role="tab", class="tab tab-active text-black [--tab-bg:orange]">監視する側</div>
         <% else %>
           <div role="tab", class="tab tab-active text-black [--tab-bg:orange]">監視される側</div>
           <%= link_to "監視する側", '/guest/change_role', data: { turbo_method: :post }, role:"tab", class: "tab bg-base-100" %>
@@ -33,9 +33,7 @@
     <%= render "new_modal", record: @record %>
   </div>
 <% end %>
+
 <% unless current_user.guest || current_user.related? %>
   <%= render "no_related_modal" %>
-  <div class="fixed bottom-24 right-10">
-    <%= link_to "連携する！", relationships_menu_path, class:"btn btn-secondary text-xl font-bold" %>
-  </div>
 <% end %>

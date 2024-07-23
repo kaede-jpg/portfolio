@@ -9,7 +9,7 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = current_user.records.build(meal_image: resized_image(record_params[:meal_image]))
+    @record = current_user.records.build(record_params)
     @record.save!
     MealAdviseJob.perform_later(@record)
     LinebotJob.perform_later(@record)
@@ -27,7 +27,7 @@ class RecordsController < ApplicationController
   def record_params
     params.require(:record).permit(:meal_image)
   end
-
+  
   def resized_image(image_params)
     return if image_params.blank?
 
