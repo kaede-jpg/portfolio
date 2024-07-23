@@ -6,6 +6,7 @@ class StampedRecordsController < ApplicationController
   end
 
   private
+
   def set_stamps
     @stamps = Stamp.all
     @stamped_records = StampedRecord.where(record_id: params[:record_id], stamp_id: params[:stamp_id])
