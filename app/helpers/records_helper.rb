@@ -3,10 +3,8 @@ module RecordsHelper
     sum = 0
     count = 0
     records.each do |record|
-      if record.each_score.positive?
-        sum += record.each_score
-        count += 1
-      end
+      sum += record.each_score
+      count += 1
     end
     count.zero? ? 0 : sum / count
   end

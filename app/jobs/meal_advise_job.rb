@@ -17,7 +17,7 @@ class MealAdviseJob < ApplicationJob
     client = OpenAI::Client.new(access_token: Rails.application.credentials.dig(:openai, :api_key))
     response = client.chat(
       parameters: {
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         messages: [{
           role: 'user',
           content: [
