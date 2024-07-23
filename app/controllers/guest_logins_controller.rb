@@ -17,7 +17,7 @@ class GuestLoginsController < ApplicationController
   end
 
   private
-  
+
   def create_guest_user
     @guest_user = User.create(
       name: 'ゲスト',
