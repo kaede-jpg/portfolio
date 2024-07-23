@@ -28,9 +28,9 @@ class GuestLoginsController < ApplicationController
       guest: true,
       agreement: true
     )
-   @guest_user.activate!
+    @guest_user.activate!
   end
-  
+
   def create_sample_record(user)
     record = user.records.build
     record.meal_image.attach(
