@@ -4,19 +4,25 @@ class RelationshipsController < ApplicationController
 
   def create
     partner = User.find_by(relationship_code: relationship_params[:relationship_code])
-    partner_valid = partner&.relationship_code == relationship_params[:relationship_code]
-    if partner_valid && create_relationship(partner)
-      current_user.save
-      redirect_to records_path, notice: t('notice.create_relationship')
+    if valid_partner?(partner, relationship_params[:relationship_code])
+      create_relationship(partner)
+      if @relationship.save
+        current_user.save
+        redirect_to records_path, notice: t('notice.create_relationship')
+      else
+        flash.now[:alert] = t('alert.create_relationship_failed')
+        render :menu, status: :unprocessable_entity
+      end
     else
-      flash.now[:alert] = flash.now[:alert] = partner_valid ? t('alert.create_relationship_failed') : t('alert.not_correct_code')
+      flash.now[:alert] = t('alert.not_correct_code')
       render :menu, status: :unprocessable_entity
     end
   end
 
   def relationship_code
     if relationship_code_params[:role].present?
-      if create_relationship_attributes(relationship_code_params[:role])
+      create_relationship_attributes(relationship_code_params[:role])
+      if current_user.save
         render :relationship_code
       else
         flash.now[:alert] = t('alert.create_code_failed')
@@ -25,7 +31,6 @@ class RelationshipsController < ApplicationController
     else
       current_user.errors.add(:role, t('alert.select'))
       flash.now[:alert] = t('alert.create_code_failed')
-      render :menu, status: :unprocessable_entity
     end
   end
 
@@ -48,11 +53,16 @@ class RelationshipsController < ApplicationController
   def initialize_relationship
     @relationship = Relationship.new
     return unless current_user.related?
+
     if current_user.monitor?
       @monitored_user = User.monitored_by(current_user)
     else
       @monitor_users = User.monitors_of(current_user)
     end
+  end
+
+  def valid_partner?(partner, relationship_code)
+    partner&.relationship_code == relationship_code
   end
 
   def create_relationship_attributes(role)
@@ -62,7 +72,6 @@ class RelationshipsController < ApplicationController
       relationship_code_made_at: Time.zone.now,
       role:
     }
-    current_user.save
   end
 
   def create_relationship(partner)
@@ -73,6 +82,5 @@ class RelationshipsController < ApplicationController
       @relationship = Relationship.new(monitor_id: current_user.id, monitored_id: partner.id)
       current_user.monitor!
     end
-    @relationship.save
   end
 end
