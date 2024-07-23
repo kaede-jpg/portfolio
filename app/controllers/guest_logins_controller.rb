@@ -34,9 +34,9 @@ class GuestLoginsController < ApplicationController
   def create_sample_record(user)
     record = user.records.build
     record.meal_image.attach(
-      io: Rails.root.join('app/assets/images/sample_meal.jpg').open,
-      filename: 'sample_meal.jpg',
-      content_type: 'image/jpg'
+      io: Rails.root.join('app/assets/images/sample_meal.webp').open,
+      filename: 'sample_meal.webp',
+      content_type: 'image/webp'
     )
     record.save!
     MealAdviseJob.perform_later(record)
