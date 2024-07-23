@@ -1,5 +1,5 @@
 <div class="card card-compact bg-base-200 shadow-xl mx-auto max-w-md">
-  <div class="flex p-4 items-start">
+  <div class="flex flex-col sm:flex-row p-4 items-start">
     <h2 class="card-title">
       <%= l record.created_at, format: :time %>
     </h2>
@@ -7,7 +7,7 @@
       <div class="chat chat-start ml-4 w-full">
         <div class="chat-image avatar">
           <div class="w-10">
-              <%= image_tag "logo.png" %>
+              <%= image_tag "logo.webp" %>
           </div>
         </div>
         <div class="chat-bubble bg-red-100">
@@ -20,7 +20,7 @@
     <% end %>
   </div>
   <div id="<%= dom_id record %>" class="relative my-auto">
-    <%= image_tag record.meal_image.variant(resize: 399),  class: "w-full" %>
+    <%= image_tag record.meal_image,  class: "w-full" %>
     <div id="stamps-<%= dom_id record %>" class="stamps absolute inset-0 grid grid-cols-8 grid-rows-8">
       <% record.stamped_records.order(:created_at).limit(64).each do |stamped_record| %>
         <%= render "stamped_records/stamp", stamp: stamped_record.stamp %>
