@@ -1,5 +1,5 @@
 <div class="px-4 pt-4 pb-12 w-full flex flex-col justify-center items-center gap-6">
-    <div class="mt-2">
+    <div class="bg-base-200 rounded-lg mt-2 py-4">
         <p class="text-xl font-bold text-center pb-4">こう思ったことはありませんか？</p>
         <div class="lg:flex">
             <div class="chat chat-start">
@@ -26,98 +26,19 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col items-center gap-4 bg-base-200 rounded-lg p-6">
-        <h1 class="text-2xl font-bold text-primary">「ぷに活監視システム」で、家族・友人にダイエットを監視してもらおう！</h1>
-        <div class="flex flex-col gap-2 sm:flex-row sm:gap-24">
-            <%= link_to "新規登録", new_user_path, class: "btn btn-lg btn-accent drop-shadow-lg" %>
-            <%= link_to 'ゲストログイン(機能のお試し)', '/guest_login', data: { turbo_method: :post }, class:"btn btn-secondary drop-shadow-lg sm:btn-lg" %>
-        </div>
-    </div>
+    <h1 class="text-2xl font-bold text-secondary">「ぷに活監視システム」で、家族・友人にダイエットを監視してもらおう！</h1>
     <div class="flex flex-col lg:flex-row gap-4">
-        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-lg">
+        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-xl">
             <div class="flex gap-2 p-4 font-bold">
                 <h2 class="text-2xl">①</h2>
                 <h2>１対１～３人で連携し、ダイエットしたい人を見張ることができます。</h2>
             </div>
-            <div class="flex flex-col gap-4">
-                <figure class="h-48">
-                    <%= image_tag "top/introduction1.png", class:"h-full" %>
-                </figure>
-                <div class="flex flex-col">
-                    <div class="ml-8">機能の使い方</div>
-                    <div class="carousel carousel-center bg-neutral rounded-box p-2 space-x-4 mx-4 text-black text-sm">
-                        <div id="item1-1" class="carousel-item w-11/12 flex flex-col gap-1 p-2 box-border rounded-box bg-white">
-                            <h3 class="text-center font-bold text-lg">新規登録</h3>
-                            <div class="flex flex-col gap-2">
-                                <ul>
-                                    <li>
-                                        <h3 class="font-bold">通常登録</h3>
-                                        <p class="ml-4">フォームを入力し「登録」すると、登録されたメールアドレスに認証用メールを送信します。メールに記載のURLをクリックすることで、メールアドレス認証が完了し、ログインできるようになります。</p>
-                                    </li>
-                                    <li>
-                                        <h3 class="font-bold">LINEで登録（おすすめ）</h3>
-                                        <p class="ml-4">さらに、LINE公式アカウントと友達になることで、監視側への通知（投稿時・リマインド）機能も使用できます。</p>
-                                    </li>
-                                </ul>
-                                <%= image_tag "top/signin.png", class:"w-5/6 sm:w-60 mx-auto" %>
-                            </div>
-                            <div class="text-center mt-auto">1</div>
-                        </div>
-                        <div id="item1-2" class="carousel-item w-11/12 flex flex-col gap-1 p-2 box-border rounded-box bg-white">
-                            <h3 class="text-center font-bold text-lg">ユーザー同士の連携①</h3>
-                            <ul class="flex flex-col gap-2">
-                                <li class="flex flex-col sm:flex-row gap-2">
-                                    <p>「連携する」で連携の設定に移動します。<br>※2人目以上の連携は右上の <i class="fa-solid fa-bars"></i> マーク→「連携の設定」から移動できます。</p>
-                                    <%= image_tag "top/relationship1.png", class:"w-5/6 sm:w-48 mx-auto" %>
-                                </li>
-                                <li class="flex flex-col sm:flex-row gap-2">
-                                    「連携の設定」には現在連携しているユーザーが一覧で表示されています。
-                                    <%= image_tag "top/relationship2.png", class:"w-5/6 sm:w-48 mx-auto" %>
-                                </li>
-                            </ul>
-                            <div class="text-center mt-auto">2</div>
-                        </div>
-                        <div id="item1-3" class="carousel-item w-11/12 flex flex-col gap-1 p-2 box-border rounded-box bg-white">
-                            <h3 class="text-center font-bold text-lg">ユーザー同士の連携②</h3>
-                            <ul class="flex flex-col gap-2">
-                                <li class="flex flex-col sm:flex-row gap-2">
-                                    <div>
-                                        <h3 class="font-bold">連携コードがないので発行する</h3>
-                                        <p class="ml-4">担当したい役割を選択したうえで「発行」し、表示されたコードを連携したいパートナーに共有しましょう。</p>
-                                    </div>
-                                    <%= image_tag "top/relationship3-1.gif", class:"w-5/6 sm:w-48 mx-auto" %>
-                                </li>
-                                <li class="flex flex-col sm:flex-row gap-2">
-                                    <div>
-                                        <h3 class="font-bold">連携コードあり</h3>
-                                        <p class="ml-4">パートナーから連携コードを既に共有されている場合、コードを「登録」することでユーザー同士の連携が完了します。</p>
-                                    </div>
-                                    <%= image_tag "top/relationship3-2.gif", class:"w-5/6 sm:w-48 mx-auto" %>
-                                </li>
-                            </ul>
-                            <div class="text-center mt-auto">3</div>
-                        </div>
-                        <div id="item1-4" class="carousel-item w-11/12 flex flex-col gap-1 p-2 box-border rounded-box bg-white">
-                            <h3 class="text-center font-bold text-lg">連携についての注意点</h3>
-                            <ul class="flex flex-col gap-2">
-                                <li>・監視側同士、監視する側同士では連携できません。</li>
-                                <li>・連携できるユーザーの数には上限があり、監視される側１人に対し監視側は３人までです。</li>
-                                <li>・連携しているユーザーが既にいる場合、役割を変更することはできません。役割を変更したい場合は一度すべての連携を解除してください。</li>
-                            </ul>
-                            <div class="text-center mt-auto">4</div>
-                        </div>
-                    </div>
-                    <div class="flex w-full justify-center gap-2 py-2">
-                        <a href="#item1-1" class="btn btn-xs btn-neutral">1</a>
-                        <a href="#item1-2" class="btn btn-xs btn-neutral">2</a>
-                        <a href="#item1-3" class="btn btn-xs btn-neutral">3</a>
-                        <a href="#item1-4" class="btn btn-xs btn-neutral">4</a>
-                    </div>
-                </div>
-                <div class="p-4"></div>
-            </div>
+            <figure class="bg-white">
+                <%= image_tag "top/introduction1.png" %>
+            </figure>
+            <div class="p-4"></div>
         </div>
-        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-lg">
+        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-xl">
             <div class="flex gap-2 p-4 font-bold">
                 <h2 class="text-2xl">②</h2>
                 <h2>
@@ -125,98 +46,44 @@
                     <p>監視する側は、スタンプ・コメントでリアクションしましょう！</P>
                 </h2>
             </div>
-            <div class="flex flex-col gap-4">
-                <figure class="h-48">
-                    <%= image_tag "top/introduction2.png", class:"sm:h-full" %>
-                </figure>
-                <div class="flex flex-col">
-                    <div class="ml-8">機能の使い方</div>
-                    <div class="carousel carousel-center bg-neutral rounded-box p-2 space-x-4 mx-4 text-black text-sm">
-                        <div id="item2-1" class="carousel-item w-11/12 flex flex-col gap-1 p-2 box-border rounded-box bg-white">
-                            <h3 class="text-center font-bold text-lg">記録機能</h3>
-                            <ul>
-                                <li class="flex flex-col gap-2">
-                                    <p>「投稿する」から食事の画像を記録することができます。</p>
-                                    <%= image_tag "top/record.gif", class:"w-5/6 mx-auto" %>
-                                </li>
-                            </ul>
-                            <div class="text-center mt-auto">1</div>
-                        </div>
-                        <div id="item2-2" class="carousel-item w-11/12 flex flex-col gap-1 p-2 box-border rounded-box bg-white">
-                            <h3 class="text-center font-bold text-lg">スタンプ・スコア機能</h3>
-                            <ul class="flex flex-col gap-2">
-                                <li class="flex flex-col sm:flex-row gap-2">
-                                    <p>食事の記録に対して、監視側はスタンプを送ってリアクションできます。</p>
-                                    <%= image_tag "top/stamp1.gif", class:"w-full sm:w-48 mx-auto" %>
-                                </li>
-                                <li class="flex flex-col sm:flex-row gap-2">
-                                    <p>監視される側には、監視側からのスタンプの集計を基に算出された日別のスコアが表示されます。</p>
-                                    <%= image_tag "top/stamp2.png", class:"w-5/6 sm:w-48 mx-auto" %>
-                                </li>
-                            </ul>
-                            <div class="text-center mt-auto">2</div>
-                        </div>
-                        <div id="item2-3" class="carousel-item w-11/12 flex flex-col gap-1 p-2 box-border rounded-box bg-white">
-                            <h3 class="text-center font-bold text-lg">コメント機能</h3>
-                            <ul>
-                                <li class="flex flex-col gap-2">
-                                    <p>食事の記録に対してコメントができ、交流することができます。</p>
-                                    <%= image_tag "top/comment.gif", class:"w-5/6 mx-auto" %>
-                                </li>
-                            </ul>
-                            <div class="text-center mt-auto">3</div>
+            <figure class="bg-white">
+                <%= image_tag "top/introduction2.png" %>
+            </figure>
+            <div class="p-4">
+                <div class="chat chat-end">
+                    <div class="chat-image avatar">
+                        <div class="w-10 rounded-full bg-white">
+                            <%= image_tag "top/biyou_nijuuago.png" %>
                         </div>
                     </div>
-                    <div class="flex w-full justify-center gap-2 py-2">
-                        <a href="#item2-1" class="btn btn-xs btn-neutral">1</a>
-                        <a href="#item2-2" class="btn btn-xs btn-neutral">2</a>
-                        <a href="#item2-3" class="btn btn-xs btn-neutral">3</a>
-                    </div>
+                    <div class="chat-bubble bg-orange-100">スタンプで怒られると、画面が埋まって無言の圧を感じる…</div>
                 </div>
             </div>
-            <div class="p-4"></div>
         </div>
-        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-lg">
+        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-xl">
             <div class="flex gap-2 p-4 font-bold">
                 <h2 class="text-2xl">③</h2>
                 <h2>監視する側へ、投稿忘れのリマインド・投稿通知をLINEで送信します。</h2>
             </div>
-            <div class="flex flex-col gap-4">
-                <figure class="h-48">
-                    <%= image_tag "top/introduction3.png", class:"h-full" %>
-                </figure>
-                <div class="flex flex-col">
-                    <div class="ml-8">機能の使い方</div>
-                    <div class="ccarousel carousel-center bg-neutral rounded-box p-2 space-x-4 mx-4 text-black text-sm">
-                        <div id="item3-1" class="carousel-item w-full flex flex-col gap-1 p-2 box-border rounded-box bg-white">
-                            <h3 class="text-center font-bold text-lg">LINE通知機能</h3>
-                            <ul>
-                                <li>
-                                    <p>「LINEで登録済※」かつ「LINE公式アカウントと友達」であれば、監視側に以下の条件で通知を送信します。</p>
-                                    <ul class="ml-4">
-                                        <li>・監視される側が記録を行ったとき</li>
-                                        <li>・監視される側が24時間以上記録を行っていない場合</li>
-                                    </ul>
-                                    <p>更新があったらリアクションしに行き、記録をサボっていたら声をかけてあげましょう。</p>
-                                    <p class="mt-2">※通常の会員登録後も、右上の <i class="fa-solid fa-bars"></i> マーク→「LINEで連携」からLINE連携を行えます。</p>
-                                </li>
-                            </ul>
-                            <div class="text-center mt-auto">1</div>
+            <figure class="bg-white">
+                <%= image_tag "top/introduction3.png", class:"w-1/2" %>
+            </figure>
+            <div class="p-4">
+                <div class="chat chat-start">
+                    <div class="chat-image avatar">
+                        <div class="w-10 rounded-full bg-white">
+                            <%= image_tag "top/shinpai_man.png" %>
                         </div>
                     </div>
-                    <div class="flex w-full justify-center gap-2 py-2">
-                        <a href="#item3-1" class="btn btn-xs btn-neutral">1</a>
+                    <div class="chat-bubble bg-red-100">
+                        <p>更新があったらリアクションしに行こう。</p>
+                        <p>記録をサボっていたら声をかけてあげよう。</p>
                     </div>
                 </div>
             </div>
-            <div class="p-4"></div>
         </div>
     </div>
-    <div class="flex flex-col items-center gap-4 bg-base-200 rounded-lg p-6">
-        <h1 class="text-2xl font-bold text-primary">「ぷに活監視システム」で、家族・友人にダイエットを監視してもらおう！</h1>
-        <div class="flex flex-col gap-2 sm:flex-row sm:gap-24">
-            <%= link_to "新規登録", new_user_path, class: "btn btn-lg btn-accent drop-shadow-lg" %>
-            <%= link_to 'ゲストログイン(機能のお試し)', '/guest_login', data: { turbo_method: :post }, class:"btn btn-secondary drop-shadow-lg sm:btn-lg" %>
-        </div>
+    <div>
+        <%= link_to "はじめる！", new_user_path, class: "fixed bottom-0 inset-x-0 btn btn-accent text-xl font-bold z-50" %>
     </div>
 </div>
