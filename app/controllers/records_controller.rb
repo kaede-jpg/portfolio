@@ -27,6 +27,23 @@ class RecordsController < ApplicationController
   def record_params
     params.require(:record).permit(:meal_image)
   end
+  
+  def resized_image(image_params)
+    return if image_params.blank?
+
+    image = MiniMagick::Image.read(image_params.tempfile)
+                             .format('webp')
+                             .combine_options do |c|
+      c.resize '442x442^'
+      c.gravity 'center'
+      c.extent '442x442'
+    end
+    ActiveStorage::Blob.create_and_upload!(
+      io: StringIO.new(image.to_blob),
+      filename: "#{SecureRandom.hex}.webp",
+      content_type: 'image/webp'
+    )
+  end
 
   def resized_image(image_params)
     return if image_params.blank?

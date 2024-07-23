@@ -46,6 +46,6 @@ class User < ApplicationRecord
   def role_change_restriction
     return unless role_changed? && related?
 
-    errors.add(:role, I18n.t('alert.related_user'))
+    errors.add(:role, t('alert.related_user'))
   end
 end
