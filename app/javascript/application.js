@@ -9,6 +9,18 @@ import '@fortawesome/fontawesome-free'
 library.add(fas, far, fab)
 
 document.addEventListener('turbo:load', () => {
+    const loader = document.querySelector('.loader');
+  
+    window.addEventListener('load', () => {
+      loader.style.display = 'none'; 
+    });
+  
+    setTimeout(() => {
+      loader.style.display = 'none'; 
+    }, 2000);
+  });
+
+document.addEventListener('turbo:load', () => {
     const buttons = document.querySelectorAll('.hide_btn'); 
     const stamps = document.querySelectorAll('.stamps'); 
 
