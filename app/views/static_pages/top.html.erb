@@ -1,3 +1,4 @@
+
 <div class="px-4 pt-4 pb-12 w-full flex flex-col justify-center items-center gap-6">
     <div class="mt-2">
         <p class="text-xl font-bold text-center pb-4">こう思ったことはありませんか？</p>
@@ -33,11 +34,11 @@
             <%= link_to 'ゲストログイン(機能のお試し)', '/guest_login', data: { turbo_method: :post }, class:"btn btn-secondary drop-shadow-lg sm:btn-lg" %>
         </div>
     </div>
-    <div class="flex flex-col lg:flex-row gap-4">
-        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-lg">
+    <div class="flex flex-col items-center gap-4">
+        <div class="card bg-neutral-500 w-full md:w-1/2 shadow-lg">
             <div class="flex gap-2 p-4 font-bold">
                 <h2 class="text-2xl">①</h2>
-                <h2>１対１～３人で連携し、ダイエットしたい人を見張ることができます。</h2>
+                <h2 class="text-xl">１対１～３人で連携し、ダイエットしたい人を見張ることができます。</h2>
             </div>
             <div class="flex flex-col gap-4">
                 <figure class="h-48">
@@ -117,10 +118,10 @@
                 <div class="p-4"></div>
             </div>
         </div>
-        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-lg">
+        <div class="card bg-neutral-500 w-full md:w-1/2 shadow-lg">
             <div class="flex gap-2 p-4 font-bold">
                 <h2 class="text-2xl">②</h2>
-                <h2>
+                <h2 class="text-xl">
                     <p>監視される側は、食事を写真で記録します。</p>
                     <p>監視する側は、スタンプ・コメントでリアクションしましょう！</P>
                 </h2>
@@ -137,7 +138,7 @@
                             <ul>
                                 <li class="flex flex-col gap-2">
                                     <p>「投稿する」から食事の画像を記録することができます。</p>
-                                    <%= image_tag "top/record.gif", class:"w-5/6 mx-auto" %>
+                                    <%= image_tag "top/record.gif", class:"w-5/6 sm:w-60 mx-auto" %>
                                 </li>
                             </ul>
                             <div class="text-center mt-auto">1</div>
@@ -147,7 +148,7 @@
                             <ul class="flex flex-col gap-2">
                                 <li class="flex flex-col sm:flex-row gap-2">
                                     <p>食事の記録に対して、監視側はスタンプを送ってリアクションできます。</p>
-                                    <%= image_tag "top/stamp1.gif", class:"w-full sm:w-48 mx-auto" %>
+                                    <%= image_tag "top/stamp1.gif", class:"w-5/6 sm:w-48 mx-auto" %>
                                 </li>
                                 <li class="flex flex-col sm:flex-row gap-2">
                                     <p>監視される側には、監視側からのスタンプの集計を基に算出された日別のスコアが表示されます。</p>
@@ -161,7 +162,7 @@
                             <ul>
                                 <li class="flex flex-col gap-2">
                                     <p>食事の記録に対してコメントができ、交流することができます。</p>
-                                    <%= image_tag "top/comment.gif", class:"w-5/6 mx-auto" %>
+                                    <%= image_tag "top/comment.gif", class:"w-5/6 sm:w-60 mx-auto" %>
                                 </li>
                             </ul>
                             <div class="text-center mt-auto">3</div>
@@ -176,10 +177,10 @@
             </div>
             <div class="p-4"></div>
         </div>
-        <div class="card bg-neutral-500 w-full lg:w-1/3 shadow-lg">
+        <div class="card bg-neutral-500 w-full md:w-1/2 shadow-lg">
             <div class="flex gap-2 p-4 font-bold">
                 <h2 class="text-2xl">③</h2>
-                <h2>監視する側へ、投稿忘れのリマインド・投稿通知をLINEで送信します。</h2>
+                <h2 class="text-xl">監視する側へ、投稿忘れのリマインド・投稿通知をLINEで送信します。</h2>
             </div>
             <div class="flex flex-col gap-4">
                 <figure class="h-48">

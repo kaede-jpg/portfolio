@@ -11,7 +11,7 @@ class RecordsController < ApplicationController
   def create
     @record = current_user.records.build(meal_image: resized_image(record_params[:meal_image]))
     @record.save!
-    MealAdviseJob.perform_later(@record)
+    # MealAdviseJob.perform_later(@record)
     LinebotJob.perform_later(@record)
     redirect_to records_path, notice: t('activerecord.models.record') + t('notice.create')
   end
