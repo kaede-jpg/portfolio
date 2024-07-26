@@ -33,12 +33,12 @@
       <% end %>
     </div>
     <div class="relative px-4">
+      <%= yield %>
       <div class="loader fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center">
         <div class="rounded-lg bg-neutral w-20 h-20 flex items-center justify-center">
           <div class="loading loading-spinner loading-lg"></div>
         </div>
       </div>
-      <%= yield %>
     </div>
   </body>
 </html>

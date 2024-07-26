@@ -10,6 +10,8 @@ library.add(fas, far, fab)
 
 document.addEventListener('turbo:load', () => {
     const loader = document.querySelector('.loader');
+    const new_record_loader = document.querySelector('.new_record_loader');
+    const btn = document.querySelector('.new_record_btn');
   
     window.addEventListener('load', () => {
       loader.style.display = 'none'; 
@@ -18,6 +20,20 @@ document.addEventListener('turbo:load', () => {
     setTimeout(() => {
       loader.style.display = 'none'; 
     }, 2000);
+
+    if (new_record_loader && btn) {
+        btn.addEventListener('click', () => {
+            new_record_loader.style.display = 'flex'; 
+        });
+
+        window.addEventListener('load', () => {
+            new_record_loader.style.display = 'none'; 
+        });
+        
+        setTimeout(() => {
+            new_record_loader.style.display = 'none'; 
+        }, 2000);
+    };
   });
 
 document.addEventListener('turbo:load', () => {

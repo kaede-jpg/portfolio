@@ -1,5 +1,5 @@
-<dialog id="new_record_modal" class="modal">
-  <div class="modal-box">
+<dialog id="new_record_modal" class="modal z-40">
+  <div class="modal-box relative">
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
@@ -7,6 +7,11 @@
       <h3 class="font-bold text-lg"><%= t('.create_record') %></h3>
       <div class="mx-auto">
         <%= render "form", record: record %>
+      </div>
+    </div>
+    <div class="new_record_loader fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center">
+      <div class="rounded-lg bg-neutral w-20 h-20 flex items-center justify-center">
+        <div class="loading loading-spinner loading-lg"></div>
       </div>
     </div>
   </div>
