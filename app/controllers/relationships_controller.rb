@@ -48,7 +48,7 @@ class RelationshipsController < ApplicationController
   def initialize_relationship
     @relationship = Relationship.new
     return unless current_user.related?
-    
+
     if current_user.monitor?
       @monitored_user = User.monitored_by(current_user)
     else
