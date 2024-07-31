@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html  data-theme="cupcake">
   <head>
-    <title>ぷに活監視システム</title>
+    <title><%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6Q501QWTWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6Q501QWTWX');
+    </script>
   </head>
 
   <body>
@@ -33,12 +41,12 @@
       <% end %>
     </div>
     <div class="relative px-4">
+      <%= yield %>
       <div class="loader fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center">
         <div class="rounded-lg bg-neutral w-20 h-20 flex items-center justify-center">
           <div class="loading loading-spinner loading-lg"></div>
         </div>
       </div>
-      <%= yield %>
     </div>
   </body>
 </html>
