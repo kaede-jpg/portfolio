@@ -49,6 +49,7 @@ gem 'image_processing', '~> 1.2'
 gem 'aws-sdk-s3'
 
 gem 'line-bot-api'
+gem 'meta-tags'
 gem 'rails-i18n'
 gem 'ruby-openai'
 gem 'simple_calendar'
