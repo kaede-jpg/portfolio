@@ -2,6 +2,6 @@
   <%= render 'shared/error_message' , object: f.object %>
   <div class="flex flex-col items-center gap-2">
     <%= f.file_field :meal_image, required: true, class: "file-input file-input-bordered w-full max-w-xs" %>
-    <%= f.submit t('helpers.submit.submit'), class: 'btn btn-secondary' %>
+    <%= f.submit t('helpers.submit.submit'), class: 'new_record_btn btn btn-secondary' %>
   </div>
 <% end %>

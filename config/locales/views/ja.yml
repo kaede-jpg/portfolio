@@ -40,7 +40,8 @@ ja:
       title: ユーザー編集
       return: 戻る
     send_activation:
-      title: メールアドレス確認用メールを送信しました
+      title: 確認用メール送信完了
+      sent_mail: メールアドレス確認用メールを送信しました
       complete_process: メールに記載のリンクから操作を完了してください
       return: 戻る
   user_sessions:
@@ -67,9 +68,11 @@ ja:
     without_code_modal:
       information_of_change_role: 役割を変更するには現在の連携の解除が必要です
     relationship_code:
+      title: 連携コード
       information_of_relationship: こちらをパートナーの連携コード入力欄に入力してください。
   records:
     index:
+      title: 記録一覧
       create_record: 食事を記録する！
     record:
       hide_stamps: スタンプを隠す
