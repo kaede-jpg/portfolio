@@ -1,14 +1,22 @@
-<h3><%= title t('.title') %></h3>
-<%= form_with model: @user, url: password_reset_path(@token) do |f| %>
-    <%= render 'shared/error_message', object: f.object %>
-	<%= f.label :email %>
-    <%= @user.email %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password, class:"input input-bordered" %>
-
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class:"input input-bordered" %>
-
-    <%= f.submit t('helpers.submit.update'), class:"btn" %>
-<% end %>
+<div class="flex flex-col items-center pt-4 gap-3">
+    <h1 class="text-xl font-bold underline decoration-2 underline-offset-2"><%= title t('.title') %></h1>
+    <%= form_with model: @user, url: password_reset_path(@token) do |f| %>
+        <%= render 'shared/error_message', object: f.object %>
+        <div class="flex flex-col items-center gap-2">
+            <div>
+                <%= f.label :email, style: "display: block" %>
+                <%= @user.email %>
+            </div>
+            <div>
+                <%= f.label :password, style: "display: block" %>
+                <%= f.password_field :password, class:"input input-bordered" %>
+            </div>
+            <div>
+                <%= f.label :password_confirmation, style: "display: block" %>
+                <%= f.password_field :password_confirmation, class:"input input-bordered" %>
+            </div>
+            <div>
+                <%= f.submit t('helpers.submit.update'), class: "btn btn-secondary" %>
+            </div>
+    <% end %>
+</div>
