@@ -61,13 +61,11 @@
 | VCS | GitHub |
 | その他ツール | Figma, Canva, draw.io |
 
-## ■ 画面遷移図  
-https://www.figma.com/file/tRysgu7gEyZI32HNSIl9FB/portfolio?type=design&node-id=0%3A1&mode=design&t=C2Aj8zitTiE7NrDC-1  
-
 ## ■ ER図  
-https://drive.google.com/file/d/1OVnCNF-uCuxaKUU1m1V6TYiBOCORV3af/view?usp=sharing  
+[![Image from Gyazo](https://i.gyazo.com/4d63a1919cd65dcfd5f81d77da62b69e.png)](https://gyazo.com/4d63a1919cd65dcfd5f81d77da62b69e)  
 
 ## ■ インフラ構成図  
+
 
 ## ■ 今後の展望  
   記録状態をデータ化して簡単に振り返ることができる機能や、招待URLをLINEで送信できる機能を実装予定です。   
