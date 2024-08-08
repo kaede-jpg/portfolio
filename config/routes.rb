@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'user_sessions#destroy', as: :logout
   post 'guest_login' => 'guest_logins#create'
   post 'guest/change_role' => 'guest_logins#change_role'
+  delete 'guest_logout' => 'guest_logins#logout_and_signin'
 
   post 'oauth/callback' => 'oauths#callback'
   get 'oauth/callback' => 'oauths#callback'
