@@ -64,7 +64,7 @@
 ## ■ ER図  
 [![Image from Gyazo](https://i.gyazo.com/4d63a1919cd65dcfd5f81d77da62b69e.png)](https://gyazo.com/4d63a1919cd65dcfd5f81d77da62b69e)  
 
-## ■ インフラ構成図  
+## ■ アプリ構成図  
 ![portforio_infra](https://github.com/user-attachments/assets/ca83209f-cdf5-4f74-a327-0aefd9e671c6)
 
 ## ■ 今後の展望  
