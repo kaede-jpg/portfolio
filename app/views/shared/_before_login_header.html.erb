@@ -1,11 +1,14 @@
-<div class="navbar h-16 py-2 bg-base-300 rounded-box flex gap-2">
+<div class="navbar h-16 py-2 bg-base-300 rounded-box flex gap-1">
   <div class="h-full">
     <%= link_to root_path, class: "h-full" do %>
       <%= image_tag "title_logo.webp", class: "object-contain object-left h-full" %>
     <% end %>
   </div> 
-  <div class="flex flex-col sm:flex-row gap-1 ml-auto">
-    <%= link_to 'ゲストログイン', '/guest_login', data: { turbo_method: :post }, class:"btn btn-secondary btn-xs sm:btn-sm rounded-btn" %>
-    <%= link_to t('.login'), :login, class:"btn btn-primary btn-xs sm:btn-sm rounded-btn" %>
+  <div class="flex gap-1 ml-auto">
+    <%= link_to "新規登録", new_user_path, class: "btn btn-accent rounded-btn btn-sm px-1 sm:px-2" %>
+    <div class="flex flex-col sm:flex-row sm:gap-1">
+      <%= link_to 'ゲストログイン', '/guest_login', data: { turbo_method: :post }, class:"btn btn-secondary rounded-btn btn-xs sm:btn-sm px-1" %>
+      <%= link_to t('.login'), :login, class:"btn btn-primary rounded-btn btn-xs sm:btn-sm px-1" %>
+    </div>
   </div>
 </div>
