@@ -29,14 +29,18 @@
   </div>
 </div>
 <% if current_user.monitored? %>
-  <div class="fixed bottom-10 right-10">
+  <div class="fixed bottom-24 right-10">
     <button class="btn btn-accent text-xl font-bold" onclick="new_record_modal.showModal()"><%= t('.create_record') %></button>
     <%= render "new_modal", record: @record %>
   </div>
 <% end %>
-<% unless current_user.guest || current_user.related? %>
+<% if current_user.guest %>
+  <div class="fixed bottom-10 right-10">
+    <%= link_to "ゲストログイン（お試し）を終了して新規登録する！", guest_logout_path, data: { turbo_method: :delete }, class:"btn btn-secondary text-xl font-bold" %>
+  </div>
+<% elsif current_user.related? == false %>
   <%= render "no_related_modal" %>
-  <div class="fixed bottom-24 right-10">
+  <div class="fixed bottom-10 right-10">
     <%= link_to "連携する！", relationships_menu_path, class:"btn btn-secondary text-xl font-bold" %>
   </div>
 <% end %>

@@ -16,6 +16,11 @@ class GuestLoginsController < ApplicationController
     redirect_to records_path
   end
 
+  def logout_and_signin
+    logout
+    redirect_to new_user_path, notice: t('notice.logged_out'), status: :see_other
+  end
+
   private
 
   def create_guest_user
